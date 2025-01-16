@@ -43,7 +43,7 @@ fi
 # ZSH Autosuggestions
  [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-brew bundle install --file Brewfile \
+zsh ./bin/brew.sh \
 && zsh ./bin/setup-symlinks.sh \
 && zsh ./bin/install-tmux-plugins.sh \
 && zsh ./bin/start-services.sh \

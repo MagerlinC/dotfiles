@@ -1,6 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 
+eval "$(starship init zsh)"
+
 # git/folder helpers
 function github_project_root () {
   echo "https://github.$(git config remote.origin.url | cut -f2 -d. | sed 's/:/\//')"
@@ -28,6 +30,11 @@ alias awsdaily="python3 ~/.aws/refreshMFA.py"
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 source <(fzf --zsh)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 alias cfigpull="~/git/dev-ex-config/config-sync.sh pull"
 alias cfigpush="~/git/dev-ex-config/config-sync.sh push"
@@ -48,11 +55,7 @@ tsapi () {
 
 # Catpuccin zsh-syntax-highlighting
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#667c94"
-source ~/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
-eval "$(starship init zsh)"
-# load zsh-syntax-highlighting plugin
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/oh-my-zsh.sh
 
 function search() {
   echo "Searching for: $@"

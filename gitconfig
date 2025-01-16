@@ -1,34 +1,16 @@
-[credential]
-    username = antonstrand
-
+# This is Git's per-user configuration file.
 [user]
-    name = Anton Strand
-    email = jag@antonstrand.se
-
-[includeIf "gitdir/i:~/work/"]
-    [user]
-        name = Anton Strand
-        email = anton.strand@insurello.se
-
+# Please adapt and uncomment the following lines:
+	name = Mikkel Agerlin
+	email = ma@complycloud.com
+	signingkey = 9861376C31AB74DC4FF2431E4A1A59C8E3090B4D
 [core]
-    editor = nvim
-    pager = delta
+	editor = nvim
 
-[interactive]
-    diffFilter = delta --color-only
+[commit]
+	gpgsign = true
 
-[delta]
-    navigate = true
-    line-numbers = true
-    side-by-side = true
-    line-numbers-left-format = ""
-    line-numbers-right-format = "│ "
-
-[log]
-    date = iso
-
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
+[alias]
+fresh = !git fetch && git switch dev && git pull
+[push]
+	autoSetupRemote = true

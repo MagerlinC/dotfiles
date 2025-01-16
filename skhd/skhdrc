@@ -2,15 +2,10 @@
 alt + shift - r : killall yabai&&yabai --start-service&&skhd --restart-service
 
 # open applications and websites
-ctrl + shift + alt - k : open -a kitty
-ctrl + shift + alt - t : open -a ghostty
-ctrl + shift + alt - s : open -a slack
-ctrl + shift + alt - m : open -a messenger
-ctrl + shift + alt - c : open /Applications/Google\ Chrome.app
-ctrl + shift + alt - p : open -a postico\ 2
+ctrl + shift + alt - s : open -a teams 
+ctrl + shift + alt - c : open /Applications/Microsoft Edge.app/.app
 ctrl + shift + alt - y : open https://www.youtube.com
 ctrl + shift + alt - g : open https://www.github.com
-ctrl + shift + alt - d : open https://github.com/orgs/insurello/projects/26
 ctrl + shift + alt - w : open -a spotify
 
 # change window focus within space
