@@ -1,6 +1,6 @@
 # dotfiles
 
-My current dot files configurations, heavily inspired/stolen from the great config of Anton Strand at: git@github.com:AntonStrand/dotfiles.git 
+My current dot files configurations, heavily inspired/stolen from the great config of Anton Strand at: https://github.com/AntonStrand/dotfiles/ 
 
 ## Instructions
 
