@@ -57,6 +57,7 @@ map("n", "<leader>bo", ":%bd|e#<CR>", { silent = true, desc = "Close all buffers
 local builtin = require("telescope.builtin")
 map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope live grep" })
+map("n", "<leader>sb", builtin.git_branches, { desc = "Telescope git branches" })
 map("n", "<leader>fr", builtin.lsp_references, { desc = "Find references" })
 
 -- Harpoon

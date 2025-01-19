@@ -14,9 +14,11 @@ ln -nfs ~/dotfiles/tmux ~/.config/tmux
 
 ln -nfs ~/dotfiles/nvim ~/.config/nvim
 
+ln -nfs ~/dotfiles/wezterm ~/.config/wezterm
+
 #ln -nfs ~/dotfiles/yabai ~/.config/yabai
 
-#ln -nfs ~/dotfiles/skhd ~/.config/skhd
+ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
 # initialize new settings
 source ~/.zshrc
