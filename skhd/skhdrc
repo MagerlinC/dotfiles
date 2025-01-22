@@ -1,11 +1,12 @@
 # restart Yabai and SKHD
 # alt + shift - r : killall yabai&&yabai --start-service&&skhd --restart-service
-
+# Restart skhd
 shift + alt - r : skhd --restart-service
 
 # open applications and websites
-ctrl + shift + alt - t : open -a teams 
-ctrl + shift + alt - w : open -a WezTerm 
+ctrl + shift + alt - t : open -a "Microsoft Teams"
+ctrl + shift + alt - i : open -a iTerm
+ctrl + shift + alt - r : open -a Rider 
 ctrl + shift + alt - b : open -a "Microsoft Edge"
 ctrl + shift + alt - y : open https://www.youtube.com
 ctrl + shift + alt - m : open https://www.google.com/maps

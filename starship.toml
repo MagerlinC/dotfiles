@@ -7,10 +7,10 @@ $directory\
 $git_branch\
 $git_metrics\
 $git_status\
-[ ](fg:purple)\
 $line_break\
 $character
 """
+# [](fg:purple)\
 
 add_newline = true
 
