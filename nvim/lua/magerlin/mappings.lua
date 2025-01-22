@@ -23,10 +23,12 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "N", "Nzzzv", { silent = true, desc = "Move to prev search item" })
 map("n", "n", "nzzzv", { silent = true, desc = "Move to next search item" })
--- Clipboard saving paste/delet
+
+-- Clipboard saving paste/delete
 map("x", "<leader>p", '"_dP', { silent = true, desc = "Paste over keeping clipboard" })
 map("n", "<leader>d", '"_d', { silent = true, desc = "Delete keeping clipboard" })
 map("v", "<leader>d", '"_d', { silent = true, desc = "Delete keeping clipboard" })
+
 -- Dont die on Q
 map("n", "Q", "<nop>")
 
@@ -78,7 +80,6 @@ end)
 map("n", "<leader>1", function()
 	harpoon:list():select(1)
 end, { desc = "Harpoon goto mark 1" })
-
 map("n", "<leader>2", function()
 	harpoon:list():select(2)
 end, { desc = "Harpoon goto mark 2" })
@@ -91,10 +92,6 @@ end, { desc = "Harpoon goto mark 4" })
 map("n", "<leader>5", function()
 	harpoon:list():select(5)
 end, { desc = "Harpoon goto mark 5" })
-
--- NvimTree
--- map("n", "<leader>+", ":NvimTreeResize +10<CR>", { silent = true, desc = "Expand NvimTree width" })
--- map("n", "<leader>-", ":NvimTreeResize -10<CR>", { silent = true, desc = "Reduce NvimTree width" })
 
 -- NeoTest
 map("n", "<leader>tr", function()
