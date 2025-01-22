@@ -21,8 +21,6 @@ map("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selected lines u
 -- Keep cursor in middle while going up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "N", "Nzzzv", { silent = true, desc = "Move to prev search item" })
-map("n", "n", "nzzzv", { silent = true, desc = "Move to next search item" })
 
 -- Clipboard saving paste/delete
 map("x", "<leader>p", '"_dP', { silent = true, desc = "Paste over keeping clipboard" })
