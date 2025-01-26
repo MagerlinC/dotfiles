@@ -12,5 +12,11 @@
 
 [alias]
 fresh = !git fetch && git switch dev && git pull
+whatsinprod = !git log origin/dev --oneline --graph
+gc = "git commit"
+gp = "git push"
+gs = "!f() {git switch -c \"$1^\"}" # todo, branch arg
+gf = "git fresh"
+
 [push]
 	autoSetupRemote = true

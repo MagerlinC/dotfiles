@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Raven ARM fix
 export RAVENDB_IMAGE=ravendb/ravendb:6.0.108-ubuntu.22.04-arm64v8
 
 alias ddb="docker compose up -d --build -V sql sql_migrations ravendb database_seeder"

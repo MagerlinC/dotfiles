@@ -60,8 +60,9 @@ map("n", "<leader>bo", ":%bd|e#<CR>", { silent = true, desc = "Close all buffers
 -- Telescope
 local builtin = require("telescope.builtin")
 map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
-map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope live grep" })
-map("n", "<leader>sb", builtin.git_branches, { desc = "Telescope git branches" })
+map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
+map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
+map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
 map("n", "<leader>fr", builtin.lsp_references, { desc = "Find references" })
 
 -- Harpoon
@@ -123,6 +124,8 @@ map("n", "<leader>gp", ":G push<CR>", { desc = "Git push" })
 
 -- Barbar
 map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
-
 map("n", "L", "<cmd>BufferNext<CR>", { desc = "Next buffer" })
 map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
+
+-- Easy-dotnet
+map("n", "<leader>dnr", ":lua require('easy-dotnet').run()<CR>", { desc = "Run dotnet" })
