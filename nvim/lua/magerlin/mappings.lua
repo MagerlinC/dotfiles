@@ -60,6 +60,12 @@ map("n", "<leader>bo", ":%bd|e#<CR>", { silent = true, desc = "Close all buffers
 -- Telescope
 local builtin = require("telescope.builtin")
 map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
+map(
+	"n",
+	"<leader>sh",
+	"<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
+	{ desc = "Telescope find hidden files" }
+)
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
 map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
@@ -129,3 +135,21 @@ map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
 
 -- Easy-dotnet
 map("n", "<leader>dnr", ":lua require('easy-dotnet').run()<CR>", { desc = "Run dotnet" })
+
+-- Nvim DAP
+map("n", "<leader>db", "<cmd>:DapToggleBreakpoint<CR>", { desc = "DAP toggle breakpoint" })
+map("n", "<leader>ds", "<cmd>:DapStepOver<CR>", { desc = "DAP Step Over" })
+map("n", "<leader>dc", "<cmd>:DapContinue<CR>", { desc = "DAP continue" })
+
+-- TODOs
+map("n", "<leader>nt", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+map("n", "<leader>pt", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- DiffView
+map("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>", { desc = "Open DiffView" })
+map("n", "<leader>dvd", "<cmd>:DiffviewOpen dev<CR>", { desc = "Open DiffView" })
