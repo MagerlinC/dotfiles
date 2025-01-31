@@ -12,6 +12,7 @@ ctrl + shift + alt - y : open https://www.youtube.com
 ctrl + shift + alt - m : open https://www.google.com/maps
 ctrl + shift + alt - g : open https://www.github.com
 ctrl + shift + alt - s : open -a spotify
+ctrl + shift + alt - p : open -a 1password 
 
 # # change window focus within space
 # # alt - x : yabai -m window --focus recent

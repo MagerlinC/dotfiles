@@ -11,7 +11,6 @@ return {
 			end,
 		},
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-
 		-- Autocompletion
 		{ "hrsh7th/nvim-cmp" }, -- Required
 		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
@@ -66,7 +65,8 @@ return {
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"ts_ls",
+				"csharp_ls",
+				"vtsls",
 				"eslint",
 				"jdtls",
 				"lua_ls",

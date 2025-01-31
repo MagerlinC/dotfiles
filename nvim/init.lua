@@ -226,3 +226,34 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+-- Diffview
+local actions = require("diffview.actions")
+require("diffview").setup({
+	keymaps = {
+		{
+			"n",
+			"<leader>nc",
+			actions.prev_conflict,
+			{ desc = "In the merge-tool: jump to the previous conflict" },
+		},
+		{
+			"n",
+			"<leader>pc",
+			actions.next_conflict,
+			{ desc = "In the merge-tool: jump to the next conflict" },
+		},
+	},
+	file_panel = {
+		listing_style = "tree", -- One of 'list' or 'tree'
+		tree_options = { -- Only applies when listing_style is 'tree'
+			flatten_dirs = true, -- Flatten dirs that only contain one single dir
+			folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
+		},
+		win_config = {
+			position = "left",
+			width = 45,
+			win_opts = {},
+		},
+	},
+})
