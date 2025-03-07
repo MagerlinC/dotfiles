@@ -8,6 +8,8 @@ ln -nfs ~/dotfiles/starship.toml ~/.config/starship.toml
 
 ln -nfs ~/dotfiles/gitconfig ~/.gitconfig
 
+ln -nfs ~/dotfiles/ideavimrc ~/.ideavimrc
+
 mkdir -p ~/.config
 
 ln -nfs ~/dotfiles/tmux ~/.config/tmux

@@ -10,7 +10,7 @@ $git_status\
 $line_break\
 $character
 """
-# [](fg:purple)\
+#[](fg:purple)\
 
 add_newline = true
 

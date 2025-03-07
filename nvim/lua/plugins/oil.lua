@@ -6,6 +6,9 @@ return {
 		keymaps = {
 			["gb"] = { "actions.parent", mode = "n" },
 		},
+		win_options = {
+			winbar = "%{v:lua.require('oil').get_current_dir()}",
+		},
 	},
 	-- Optional dependencies
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },

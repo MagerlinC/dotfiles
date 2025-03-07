@@ -62,7 +62,7 @@ local builtin = require("telescope.builtin")
 map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
 map(
 	"n",
-	"<leader>sh",
+	"<leader>hf",
 	"<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
 	{ desc = "Telescope find hidden files" }
 )
@@ -123,10 +123,12 @@ map("n", "<leader>nc", "<CMD>NoiceDismiss<CR>", { desc = "Dismiss notifications"
 
 -- Fugitive
 map("n", "<leader>gf", ":G fresh<CR>", { desc = "Git fresh" })
+map("n", "<leader>gmd", ":G merge origin dev<CR>", { desc = "Git merge dev" })
 map("n", "<leader>gs", ":G<CR>", { desc = "Git status" })
 map("n", "<leader>ga", ":G add . <CR>", { desc = "Git add all" })
 map("n", "<leader>gc", ":G commit<CR>", { desc = "Git commit" })
 map("n", "<leader>gp", ":G push<CR>", { desc = "Git push" })
+map("n", "<leader>gpl", ":G pull<CR>", { desc = "Git pull" })
 
 -- Barbar
 map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
@@ -154,3 +156,12 @@ end, { desc = "Previous todo comment" })
 map("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>", { desc = "Open DiffView" })
 map("n", "<leader>dvc", "<cmd>:DiffviewClose<CR>", { desc = "Close DiffView" })
 map("n", "<leader>dvd", "<cmd>:DiffviewOpen dev<CR>", { desc = "Open DiffView against dev" })
+
+-- HTML formatting regex replace
+
+map(
+	"n",
+	"<leader>fix",
+	":%s/<ul>/<li>/g<CR>|:%s/<\\/ul>/<\\/li>/g<CR>|:%s/- //g<CR>|:%s/<!-#/<!--#/g<CR>",
+	{ desc = "HTML replace open ULs with open LIs" }
+)

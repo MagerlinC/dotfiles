@@ -6,6 +6,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"Itsafalcon/neotest-dotnet",
+		"nvim-neotest/neotest-jest",
 		"thenbe/neotest-playwright",
 	},
 	config = function()
@@ -16,6 +17,14 @@ return {
 						persist_project_selection = true,
 						enable_dynamic_test_discovery = true,
 					},
+				}),
+				require("neotest-jest")({
+					jestCommand = "npm test --",
+					jestConfigFile = "jest/jest.config.ts",
+					env = { CI = true },
+					cwd = function(path)
+						return vim.fn.getcwd()
+					end,
 				}),
 				require("neotest-dotnet")({
 					dap = {
