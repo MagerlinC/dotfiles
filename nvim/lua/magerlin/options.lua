@@ -1,5 +1,15 @@
-local o = vim.o
+vim.diagnostic.config({
+	-- Use the default configuration
+	-- virtual_lines = true,
 
+	-- Alternatively, customize specific options
+	virtual_lines = {
+		-- Only show virtual line diagnostics for the current cursor line
+		current_line = true,
+	},
+})
+
+local o = vim.o
 o.nu = true
 o.relativenumber = true
 o.clipboard = "unnamed"
@@ -27,6 +37,9 @@ o.backup = false
 
 o.incsearch = true
 o.termguicolors = true
+
+o.completeopt = "fuzzy"
+o.winborder = "none"
 
 o.signcolumn = "number"
 vim.opt.isfname:append("@-@")

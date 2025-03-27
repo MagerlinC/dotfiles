@@ -5,8 +5,8 @@ map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- Splitting
-map("n", "<leader>sh", ":split<CR>", { desc = "split horizontal" })
-map("n", "<leader>sv", ":vsplit<CR>", { desc = "split vertical" })
+map("n", "<leader>-", ":split<CR>", { desc = "split horizontal" })
+map("n", "<leader>|", ":vsplit<CR>", { desc = "split vertical" })
 
 -- source keymaps
 map("n", "<leader>cc", ":source ~/.config/nvim/lua/mappings.lua<CR>", { desc = "source keymaps" })
