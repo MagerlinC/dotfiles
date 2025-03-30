@@ -157,11 +157,5 @@ map("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>", { desc = "Open DiffView" })
 map("n", "<leader>dvc", "<cmd>:DiffviewClose<CR>", { desc = "Close DiffView" })
 map("n", "<leader>dvd", "<cmd>:DiffviewOpen dev<CR>", { desc = "Open DiffView against dev" })
 
--- HTML formatting regex replace
-
-map(
-	"n",
-	"<leader>fix",
-	":%s/<ul>/<li>/g<CR>|:%s/<\\/ul>/<\\/li>/g<CR>|:%s/- //g<CR>|:%s/<!-#/<!--#/g<CR>",
-	{ desc = "HTML replace open ULs with open LIs" }
-)
+-- Floating CMDLine
+map("n", "Q", ":Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" })

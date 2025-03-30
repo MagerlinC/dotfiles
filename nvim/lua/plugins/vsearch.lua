@@ -1,5 +1,5 @@
 return {
-	dir = "~/plugins/vsearch.nvim/",
+	"magerlinc/vsearch.nvim",
 	config = function()
 		require("vsearch").setup({
 			keymap = "<leader>vs",

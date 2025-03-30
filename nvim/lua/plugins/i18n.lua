@@ -1,5 +1,5 @@
 return {
-	dir = "~/plugins/i18n.nvim/",
+	"magerlinc/i18n.nvim",
 	config = function()
 		require("i18n").setup({
 			langs = {
