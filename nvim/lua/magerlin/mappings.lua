@@ -13,6 +13,7 @@ map("n", "<leader>cc", ":source ~/.config/nvim/lua/mappings.lua<CR>", { desc = "
 
 -- General mapping
 map("n", "gb", "<C-o>", { silent = true, desc = "Go back" })
+map("n", "gi", vim.lsp.buf.implementation, { silent = true, desc = "Go to implementation" })
 
 -- Visual mode move lines
 map("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selected lines down" })
