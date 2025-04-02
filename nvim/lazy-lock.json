@@ -30,6 +30,7 @@
   "mini.icons": { "branch": "main", "commit": "86a633f0dffcfd80110bac86681dbf4b5c37ba5c" },
   "mini.nvim": { "branch": "main", "commit": "0420076298c4457f200c2de468f65d080597a347" },
   "neotest": { "branch": "master", "commit": "dddbe8fe358b05b2b7e54fe4faab50563171a76d" },
+  "neotest-dotnet": { "branch": "main", "commit": "5a2fa35c3c6a72cfd3fc6a28b3d1af6e68e6c3a8" },
   "neotest-jest": { "branch": "main", "commit": "514fd4eae7da15fd409133086bb8e029b65ac43f" },
   "neotest-playwright": { "branch": "master", "commit": "6266945039dac27a354de33d2f2a66e75485d5e9" },
   "nvim-autopairs": { "branch": "master", "commit": "6522027785b305269fa17088395dfc0f456cedd2" },

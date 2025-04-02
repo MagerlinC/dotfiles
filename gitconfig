@@ -1,4 +1,6 @@
 # This is Git's per-user configuration file.
+[url "git@github.com:"]
+ insteadOf = https://github.com/
 [user]
 # Please adapt and uncomment the following lines:
 	name = Mikkel Agerlin
