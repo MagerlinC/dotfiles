@@ -160,3 +160,20 @@ map("n", "<leader>dvd", "<cmd>:DiffviewOpen dev<CR>", { desc = "Open DiffView ag
 
 -- Floating CMDLine
 map("n", "Q", ":Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" })
+
+-- Copilot chat
+local chat = require("CopilotChat")
+map({ "n" }, "<leader>aa", chat.toggle, { desc = "AI Toggle" })
+map({ "v" }, "<leader>aa", chat.open, { desc = "AI Open" })
+map({ "n" }, "<leader>ax", chat.reset, { desc = "AI Reset" })
+map({ "n" }, "<leader>as", chat.stop, { desc = "AI Stop" })
+map({ "n", "v" }, "<leader>ap", chat.select_prompt, { desc = "AI Prompts" })
+map({ "n", "v" }, "<leader>aq", function()
+	vim.ui.input({
+		prompt = "AI Question> ",
+	}, function(input)
+		if input ~= "" then
+			chat.ask(input)
+		end
+	end)
+end, { desc = "AI Question" })
