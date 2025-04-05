@@ -31,55 +31,5 @@ return {
 			prompts = prompts,
 		},
 		event = "VeryLazy",
-		keys = {
-			-- Show prompts actions with telescope
-			{
-				"<leader>pa",
-				function()
-					require("CopilotChat").select_prompt({
-						context = {
-							"buffers",
-						},
-					})
-				end,
-				desc = "CopilotChat - Prompt actions",
-			},
-			{
-				"<leader>pa",
-				function()
-					require("CopilotChat").select_prompt()
-				end,
-				mode = "x",
-				desc = "CopilotChat - Prompt actions",
-			},
-			-- Code related commands
-			{
-				"<leader>cai",
-				function()
-					local input = vim.fn.input("Ask Copilot: ")
-					if input ~= "" then
-						vim.cmd("CopilotChat " .. input)
-					end
-				end,
-				desc = "CopilotChat - Ask input",
-			},
-			-- Quick chat with Copilot
-			{
-				"<leader>cq",
-				function()
-					local input = vim.fn.input("Quick Chat: ")
-					if input ~= "" then
-						vim.cmd("CopilotChatBuffer " .. input)
-					end
-				end,
-				desc = "CopilotChat - Quick chat",
-			},
-			-- Fix the issue with diagnostic
-			{ "<leader>cd", "<cmd>CopilotChatFixError<cr>", desc = "CopilotChat - Fix Diagnostic" },
-			-- Clear buffer and chat history
-			{ "<leader>cx", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
-			-- Toggle Copilot Chat Vsplit
-			{ "<leader>c|", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
-		},
 	},
 }
