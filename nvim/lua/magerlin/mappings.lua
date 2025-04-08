@@ -136,9 +136,6 @@ map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
 map("n", "L", "<cmd>BufferNext<CR>", { desc = "Next buffer" })
 map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
 
--- Easy-dotnet
-map("n", "<leader>dnr", ":lua require('easy-dotnet').run()<CR>", { desc = "Run dotnet" })
-
 -- Nvim DAP
 map("n", "<leader>db", "<cmd>:DapToggleBreakpoint<CR>", { desc = "DAP toggle breakpoint" })
 map("n", "<leader>ds", "<cmd>:DapStepOver<CR>", { desc = "DAP Step Over" })
