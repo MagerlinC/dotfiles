@@ -43,8 +43,8 @@ alias tmuxdev="~/dotfiles/dev-tmux.sh"
 alias devscript="dotnet run --project src/Scripts/Scripts --launch-profile Scripts.Scripts.Dev"
 alias prodscript="dotnet run --project src/Scripts/Scripts --launch-profile Scripts.Scripts.Prod"
 
-alias localrun="dotnet run --project CC.API --launch-profile Local-Docker-CC.API"
-alias devrun="dotnet run --project CC.API --launch-profile Dev-CC.API"
+alias localrun="dotnet run --project CC.API --launch-profile Local-Docker-CC.API --configuration Debug"
+alias devrun="dotnet run --project CC.API --launch-profile Dev-CC.API --configuration Debug"
 
 tsapi () {
 	cd "$(git rev-parse --show-toplevel)" || exit
