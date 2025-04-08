@@ -144,6 +144,8 @@ map("n", "<leader>db", "<cmd>:DapToggleBreakpoint<CR>", { desc = "DAP toggle bre
 map("n", "<leader>ds", "<cmd>:DapStepOver<CR>", { desc = "DAP Step Over" })
 map("n", "<leader>dc", "<cmd>:DapContinue<CR>", { desc = "DAP continue" })
 
+map("n", "<leader>dui", require("dapui").toggle, { desc = "Toggle DAP UI" })
+
 -- TODOs
 map("n", "<leader>nt", function()
 	require("todo-comments").jump_next()
