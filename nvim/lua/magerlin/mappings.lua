@@ -136,13 +136,17 @@ map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
 map("n", "L", "<cmd>BufferNext<CR>", { desc = "Next buffer" })
 map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
 
--- Easy-dotnet
-map("n", "<leader>dnr", ":lua require('easy-dotnet').run()<CR>", { desc = "Run dotnet" })
-
 -- Nvim DAP
 map("n", "<leader>db", "<cmd>:DapToggleBreakpoint<CR>", { desc = "DAP toggle breakpoint" })
+map("n", "<leader>dB", "<cmd>:DapToggleClearBreakpoints<CR>", { desc = "DAP clear breakpoints" })
 map("n", "<leader>ds", "<cmd>:DapStepOver<CR>", { desc = "DAP Step Over" })
 map("n", "<leader>dc", "<cmd>:DapContinue<CR>", { desc = "DAP continue" })
+map("n", "<leader>di", "<cmd>:DapStepInto<CR>", { desc = "DAP Step Into" })
+map("n", "<leader>dt", "<cmd>:DapTerminate<CR>", { desc = "DAP Terminate" })
+
+map("n", "<leader>dui", function()
+	require("dapui").toggle()
+end, { desc = "DAP UI" })
 
 -- TODOs
 map("n", "<leader>nt", function()
