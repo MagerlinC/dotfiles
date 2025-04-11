@@ -13,9 +13,9 @@ set cursorline
 let mapleader = " "
 
 Plug 'machakann/vim-highlightedyank'
-Plug 'preservim/nerdtree'
-map <C-h>:NERDTreeFocus<CR>
 
+Plug 'preservim/nerdtree'
+map <C-h> <Action>(ActivateProjectToolWindow)
 
 set which-key
 " ZenMode

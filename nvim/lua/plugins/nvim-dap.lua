@@ -76,7 +76,7 @@ return {
 						name = "Next.js: debug server-side",
 						type = "pwa-node",
 						request = "attach",
-						port = 9230,
+						port = 9229,
 						skipFiles = { "<node_internals>/**", "node_modules/**" },
 						cwd = "${workspaceFolder}",
 					},
