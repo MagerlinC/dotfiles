@@ -34,25 +34,6 @@ map("n", "Q", "<nop>")
 -- Git
 map("n", "<leader>gb", ":GitBlameToggle<CR>", { silent = true, desc = "Git blame" })
 
--- Hop
--- local hop = require("hop")
--- local directions = require("hop.hint").HintDirection
--- map("", "<leader>hw", function()
--- 	hop.hint_words()
--- end, { desc = "Hop word" })
--- map("", "f", function()
--- 	hop.hint_char1({ direction = directions.after_cursor, current_line_only = true })
--- end, { remap = true })
--- map("", "f", function()
--- 	hop.hint_char1({ direction = directions.before_cursor, current_line_only = true })
--- end, { remap = true })
--- map("", "t", function()
--- 	hop.hint_char1({ direction = directions.after_cursor, current_line_only = true, hint_offset = -1 })
--- end, { remap = true })
--- map("", "T", function()
--- 	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
--- end, { remap = true })
-
 -- Navigate buffers
 map("n", "<leader>bd", ":bd<CR>", { desc = "close current buffer" })
 
@@ -68,6 +49,7 @@ map(
 	{ desc = "Telescope find hidden files" }
 )
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
+map("n", "<leader>sr", "<cmd>:Telescope frecency<CR>", { desc = "Telescope frecency" })
 map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
 map("n", "<leader>fr", builtin.lsp_references, { desc = "Find references" })
