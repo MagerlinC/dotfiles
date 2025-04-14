@@ -15,7 +15,10 @@ let mapleader = " "
 Plug 'machakann/vim-highlightedyank'
 
 Plug 'preservim/nerdtree'
+
+" Pretend Rider knows how to navigate panes
 map <C-h> <Action>(ActivateProjectToolWindow)
+map <C-j> <Action>(ActivateTerminalToolWindow)
 
 set which-key
 " ZenMode
