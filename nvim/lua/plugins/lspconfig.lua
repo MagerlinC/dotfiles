@@ -48,7 +48,7 @@ return {
 				vim.diagnostic.goto_prev()
 			end, vim.tbl_deep_extend("force", opts, { desc = "Previous Diagnostic" }))
 			vim.keymap.set("n", "<leader>ca", function()
-				vim.lsp.buf.code_action()
+				require("fastaction").code_action()
 			end, vim.tbl_deep_extend("force", opts, { desc = "LSP Code Action" }))
 			vim.keymap.set("n", "<leader>fr", function()
 				vim.lsp.buf.references()

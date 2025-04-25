@@ -8,15 +8,7 @@ return {
 	config = function(_, opts)
 		require("telescope").setup({
 			unpack(opts),
-			extensions = {
-				["ui-select"] = {
-					require("telescope.themes").get_dropdown({
-						-- even more opts
-					}),
-				},
-			},
 		})
 		require("telescope").load_extension("cmdline")
-		require("telescope").load_extension("ui-select")
 	end,
 }
