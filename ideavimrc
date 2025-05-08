@@ -21,9 +21,6 @@ map <C-h> <Action>(ActivateProjectToolWindow)
 map <C-j> <Action>(ActivateTerminalToolWindow)
 
 set which-key
-" ZenMode
-map <leader>z <Action>(ToggleDistractionFreeMode)
-
 
 " File & Tab navigation
 nnoremap L :tabnext<CR>
