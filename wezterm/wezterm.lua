@@ -11,7 +11,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("0xProto")
 config.font_size = 13.0
 
 -- enable transparency
@@ -24,7 +24,8 @@ config.native_macos_fullscreen_mode = false
 config.enable_tab_bar = false
 
 -- allow international keyboard input
-config.use_ime = true
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
 
 -- Key maps
 config.keys = {
@@ -32,11 +33,6 @@ config.keys = {
 		key = "f",
 		mods = "SHIFT|CMD",
 		action = wezterm.action.ToggleFullScreen,
-	},
-	{
-		key = "o",
-		mods = "ALT",
-		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
 

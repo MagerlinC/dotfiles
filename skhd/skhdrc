@@ -5,6 +5,7 @@ shift + alt - r : skhd --restart-service
 
 # open applications and websites
 ctrl + shift + alt - t : open -a "Microsoft Teams"
+ctrl + shift + alt - w : open -a WezTerm
 ctrl + shift + alt - i : open -a iTerm
 ctrl + shift + alt - r : open -a Rider 
 ctrl + shift + alt - b : open -a "Microsoft Edge"

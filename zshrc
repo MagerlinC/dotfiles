@@ -1,7 +1,13 @@
 export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 
-eval "$(starship init zsh)"
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    echo "Loading starship"
+    eval "$(starship init zsh)"
+  }
 
 # git/folder helpers
 function github_project_root () {
@@ -27,6 +33,7 @@ export GPG_TTY
 export RAVENDB_IMAGE=ravendb/ravendb:6.0.108-ubuntu.22.04-arm64v8
 
 alias ddb="docker compose up -d --build -V sql sql_migrations ravendb database_seeder"
+alias dkill="docker compose down -v"
 alias awsdaily="python3 ~/.aws/refreshMFA.py"
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
