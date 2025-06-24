@@ -17,6 +17,7 @@ brew "node@18"
 brew "node@20", link: true
 brew "pinentry-mac"
 brew "postgresql@14"
+brew "prettierd"
 brew "ripgrep"
 brew "starship"
 brew "television"
