@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 
 -- This table will hold the configuration.
 local config = {}
+config.window_close_confirmation = "AlwaysPrompt"
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -11,8 +12,10 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("0xProto")
-config.font_size = 13.0
+config.font = wezterm.font("0xProto", {
+	weight = "Medium",
+})
+config.font_size = 14.0
 
 -- enable transparency
 config.window_background_opacity = 0.5
@@ -33,6 +36,16 @@ config.keys = {
 		key = "f",
 		mods = "SHIFT|CMD",
 		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "t",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
 

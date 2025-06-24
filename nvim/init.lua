@@ -59,22 +59,6 @@ require("nvim-highlight-colors").setup({
 	enable_named_colors = false,
 })
 
-require("conform").setup({
-	format_on_save = {
-		-- These options will be passed to conform.format()
-		timeout_ms = 1000,
-		lsp_format = "fallback",
-	},
-	formatters_by_ft = {
-		lua = { "stylua" },
-		rust = { "rustfmt", lsp_format = "fallback" },
-		javascript = { "prettierd", "prettier", stop_after_first = true },
-		typescript = { "prettierd", "prettier", stop_after_first = true },
-		typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-		csharp = { "csharpier", lsp_format = "fallback" },
-	},
-})
-
 require("lualine").setup({
 	options = {
 		theme = "catppuccin",
@@ -159,8 +143,6 @@ require("diffview").setup({
 		},
 	},
 })
-
--- Copilot chat
 
 -- Copilot chat
 local chat = require("CopilotChat")
