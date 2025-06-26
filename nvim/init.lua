@@ -19,13 +19,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Eslint on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-	command = "silent! EslintFixAll",
-	group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
-})
-
 -- Restore cursor to file position in previous editing session
 vim.api.nvim_create_autocmd("BufReadPost", {
 	callback = function(args)
@@ -160,4 +153,11 @@ chat.setup({
 			full_diff = true,
 		},
 	},
+})
+
+-- NVIM eslint
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	command = "silent! LspEslintFixAll",
+	group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
 })
