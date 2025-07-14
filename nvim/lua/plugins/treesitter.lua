@@ -20,6 +20,7 @@ return {
 				"tsx",
 				"bash",
 				"markdown",
+				"yaml",
 			},
 			sync_install = false,
 			highlight = { enable = true },

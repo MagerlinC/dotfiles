@@ -3,6 +3,8 @@ return {
 	opts = {
 		ensure_installed = {
 			"csharp_ls",
+			"yamlls",
+			"gh_actions_ls",
 			"vtsls",
 			"eslint",
 			"lua_ls",
