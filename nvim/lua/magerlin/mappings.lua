@@ -37,7 +37,19 @@ map("n", "<leader>gb", ":GitBlameToggle<CR>", { silent = true, desc = "Git blame
 -- Navigate buffers
 map("n", "<leader>bd", ":bd<CR>", { desc = "close current buffer" })
 
-map("n", "<leader>bo", ":%bd|e#<CR>", { silent = true, desc = "Close all buffers except current" })
+CloseAllButCurrentBuffer = function()
+	local current_buf = vim.fn.bufnr()
+	local current_win = vim.fn.win_getid()
+	local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+	for _, buf in ipairs(bufs) do
+		if buf.bufnr ~= current_buf then
+			vim.cmd("silent! bdelete " .. buf.bufnr)
+		end
+	end
+	vim.fn.win_gotoid(current_win)
+end
+
+map("n", "<leader>bo", CloseAllButCurrentBuffer, { silent = true, desc = "Close all buffers except current" })
 
 -- Telescope
 local builtin = require("telescope.builtin")

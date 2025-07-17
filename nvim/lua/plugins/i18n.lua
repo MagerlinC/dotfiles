@@ -2,6 +2,8 @@ return {
 	"magerlinc/i18n.nvim",
 	config = function()
 		require("i18n").setup({
+			creationKeymap = "<leader>gl",
+			creationCmd = "yarn genlabel",
 			langs = {
 				{
 					filePath = "~/git/Cirrus/frontend/localization/en.json",
