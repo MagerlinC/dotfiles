@@ -1,4 +1,6 @@
 local map = vim.keymap.set
+
+-- Window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
@@ -7,9 +9,6 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 -- Splitting
 map("n", "<leader>-", ":split<CR>", { desc = "split horizontal" })
 map("n", "<leader>|", ":vsplit<CR>", { desc = "split vertical" })
-
--- source keymaps
-map("n", "<leader>cc", ":source ~/.config/nvim/lua/mappings.lua<CR>", { desc = "source keymaps" })
 
 -- General mapping
 map("n", "gb", "<C-o>", { silent = true, desc = "Go back" })
@@ -202,7 +201,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.goto_prev()
 		end, vim.tbl_deep_extend("force", opts, { desc = "Previous Diagnostic" }))
 		map("n", "<leader>ca", function()
-			require("fastaction").code_action()
+			require("tiny-code-action").code_action()
 		end, vim.tbl_deep_extend("force", opts, { desc = "LSP Code Action" }))
 		map("n", "<leader>fr", function()
 			vim.lsp.buf.references()
