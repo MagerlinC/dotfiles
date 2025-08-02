@@ -15,12 +15,15 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("0xProto", {
 	weight = "Medium",
 })
-config.font_size = 14.0
-config.line_height = 1.1
+config.font_size = 14
+config.line_height = 1
 
 -- enable transparency
-config.window_background_opacity = 0.5
-config.text_background_opacity = 0.5
+config.window_background_opacity = 0.6
+config.text_background_opacity = 0.4
+
+config.window_padding = { left = 12, bottom = 0, top = 12, right = 0 }
+
 -- config.macos_window_background_blur = 10
 config.native_macos_fullscreen_mode = false
 
