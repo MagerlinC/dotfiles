@@ -1,8 +1,4 @@
 vim.diagnostic.config({
-	-- Use the default configuration
-	-- virtual_lines = true,
-
-	-- Alternatively, customize specific options
 	virtual_lines = {
 		-- Only show virtual line diagnostics for the current cursor line
 		current_line = true,
@@ -60,3 +56,6 @@ vim.g.copilot_no_tab_map = true
 vim.g.copilot_hide_during_completion = false
 vim.g.copilot_proxy_strict_ssl = false
 vim.g.copilot_settings = { selectedCompletionModel = "gpt-4o-copilot" }
+
+-- Comfy line numbers, apparently default setup is required to call :(
+require("comfy-line-numbers").setup()

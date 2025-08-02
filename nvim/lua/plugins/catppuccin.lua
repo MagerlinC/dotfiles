@@ -8,5 +8,11 @@ return {
 			gitsigns = true,
 			treesitter = true,
 		},
+		custom_highlights = function(colors)
+			return {
+				LineNrAbove = { fg = colors.overlay2 },
+				LineNrBelow = { fg = colors.overlay2 },
+			}
+		end,
 	},
 }

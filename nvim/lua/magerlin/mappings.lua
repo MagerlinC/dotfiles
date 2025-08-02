@@ -6,13 +6,16 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
+-- Horizontal scrolling
+map("n", "zh", "40zh", { desc = "scroll left" })
+map("n", "zl", "40zl", { desc = "scroll right" })
+
 -- Splitting
 map("n", "<leader>-", ":split<CR>", { desc = "split horizontal" })
 map("n", "<leader>|", ":vsplit<CR>", { desc = "split vertical" })
 
--- General mapping
+-- Navigational mapping
 map("n", "gb", "<C-o>", { silent = true, desc = "Go back" })
-map("n", "gi", vim.lsp.buf.implementation, { silent = true, desc = "Go to implementation" })
 
 -- Visual mode move lines
 map("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selected lines down" })
@@ -33,9 +36,8 @@ map("n", "Q", "<nop>")
 -- Git
 map("n", "<leader>gb", ":GitBlameToggle<CR>", { silent = true, desc = "Git blame" })
 
--- Navigate buffers
+-- Closing buffers
 map("n", "<leader>bd", ":bd<CR>", { desc = "close current buffer" })
-
 CloseAllButCurrentBuffer = function()
 	local current_buf = vim.fn.bufnr()
 	local current_win = vim.fn.win_getid()
@@ -63,7 +65,6 @@ map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
 map("n", "<leader>sfr", "<cmd>:Telescope frecency<CR>", { desc = "Telescope frecency" })
 map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
-map("n", "<leader>fr", builtin.lsp_references, { desc = "Find references" })
 
 -- Harpoon
 local harpoon = require("harpoon")
@@ -111,9 +112,6 @@ end, { desc = "toggle output panel" })
 
 -- Oil
 map("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil" })
-
--- Noice
-map("n", "<leader>nc", "<CMD>NoiceDismiss<CR>", { desc = "Dismiss notifications" })
 
 -- Fugitive
 map("n", "<leader>gf", ":G fresh<CR>", { desc = "Git fresh" })
@@ -176,12 +174,10 @@ map({ "n", "v" }, "<leader>aq", function()
 end, { desc = "AI Question" })
 
 -- LSP
+map("n", "gi", vim.lsp.buf.implementation, { silent = true, desc = "Go to implementation" })
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf }
-		map("n", "gr", function()
-			vim.lsp.buf.references()
-		end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Reference" }))
 		map("n", "gd", function()
 			vim.lsp.buf.definition()
 		end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Definition" }))

@@ -16,6 +16,7 @@ config.font = wezterm.font("0xProto", {
 	weight = "Medium",
 })
 config.font_size = 14.0
+config.line_height = 1.1
 
 -- enable transparency
 config.window_background_opacity = 0.5

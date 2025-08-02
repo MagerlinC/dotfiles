@@ -49,7 +49,6 @@ require("lazy").setup("plugins", {
 	},
 })
 
-require("magerlin.globals")
 require("magerlin.mappings")
 require("magerlin.options")
 
