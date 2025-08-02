@@ -1,12 +1,9 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This table will hold the configuration.
 local config = {}
 config.window_close_confirmation = "AlwaysPrompt"
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
@@ -18,11 +15,10 @@ config.font = wezterm.font("0xProto", {
 config.font_size = 14
 config.line_height = 1
 
--- enable transparency
 config.window_background_opacity = 0.6
 config.text_background_opacity = 0.4
 
-config.window_padding = { left = 12, bottom = 0, top = 12, right = 0 }
+config.window_padding = { left = 8, bottom = 0, top = 8, right = 0 }
 
 -- config.macos_window_background_blur = 10
 config.native_macos_fullscreen_mode = false

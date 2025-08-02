@@ -10,7 +10,7 @@ $git_status\
 $line_break\
 $character
 """
-#[](fg:purple)\
+# [](fg:purple)\
 
 add_newline = true
 
@@ -62,8 +62,8 @@ format = "[ $path ]($style)"
 # "Downloads" = " "
 # "Music" = "󰝚 "
 # "Pictures" = " "
-# "work" = "󰲋 "
-# "dotfiles" = "󱁻 dotfiles"
+# "work" = "󰲋"
+# "dotfiles" = "󱁻 "
 
 [git_branch]
 symbol = ""
