@@ -54,6 +54,7 @@ format = '[ $user ]($style)'
 style = "fg:text bg:surface0"
 format = "[ $path ]($style)"
 
+
 # truncation_length = 3
 # truncation_symbol = "…/"
 
@@ -85,9 +86,3 @@ vimcmd_symbol = '[](fg:bold blue)'
 vimcmd_visual_symbol = '[](fg:bold purple)'
 
 
-# [character]
-# disabled = false
-# success_symbol = '[](fg:purple bg:green)[ INSERT ](fg:bold surface0 bg:green)[](fg:green)'
-# error_symbol = '[](fg:purple bg:green)[ INSERT ](fg:bold surface0 bg:green)[](fg:green)'
-# vimcmd_symbol = '[](fg:purple bg:blue)[ NORMAL ](fg:bold surface0 bg:blue)[](fg:blue)'
-# vimcmd_visual_symbol = '[](fg:purple bg:purple)[ NORMAL ](fg:bold surface0 bg:purple)[](fg:purple)'

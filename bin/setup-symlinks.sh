@@ -22,5 +22,7 @@ ln -nfs ~/dotfiles/wezterm ~/.config/wezterm
 
 ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
+mkdir ~/.config/eza && ln -nfs ~/dotfiles/eza-catppuccin-theme.yml ~/.config/eza/theme.yml
+
 # initialize new settings
 source ~/.zshrc
