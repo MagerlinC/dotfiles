@@ -63,7 +63,7 @@ map(
 )
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
 map("n", "<leader>sfr", "<cmd>:Telescope frecency<CR>", { desc = "Telescope frecency" })
-map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
+-- map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
 
 -- Harpoon
