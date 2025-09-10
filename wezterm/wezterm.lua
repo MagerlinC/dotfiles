@@ -5,12 +5,12 @@ local config = {}
 config.window_close_confirmation = "AlwaysPrompt"
 
 if wezterm.config_builder then
-	config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 
 config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("0xProto", {
-	weight = "Medium",
+config.font = wezterm.font("0xProto Nerd Font", {
+  weight = "Medium",
 })
 config.font_size = 14
 config.line_height = 1
@@ -32,21 +32,21 @@ config.send_composed_key_when_right_alt_is_pressed = true
 
 -- Key maps
 config.keys = {
-	{
-		key = "f",
-		mods = "SHIFT|CMD",
-		action = wezterm.action.ToggleFullScreen,
-	},
-	{
-		key = "w",
-		mods = "CMD",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
-	{
-		key = "t",
-		mods = "CMD",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
+  {
+    key = "f",
+    mods = "SHIFT|CMD",
+    action = wezterm.action.ToggleFullScreen,
+  },
+  {
+    key = "w",
+    mods = "CMD",
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = "t",
+    mods = "CMD",
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
 return config
