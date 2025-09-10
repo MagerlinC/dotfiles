@@ -1,3 +1,2 @@
 #!/bin/zsh
-
-yabai --start-service && skhd --start-service
+skhd --start-service
