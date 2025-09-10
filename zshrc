@@ -24,6 +24,8 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
+# Update brewfile
+alias updbrew="rm Brewfile && brew bundle dump"
 
 alias tmuxdev="~/dotfiles/dev-tmux.sh"
 
