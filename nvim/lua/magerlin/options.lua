@@ -1,8 +1,8 @@
 vim.diagnostic.config({
-	virtual_lines = {
-		-- Only show virtual line diagnostics for the current cursor line
-		current_line = true,
-	},
+  virtual_lines = {
+    -- Only show virtual line diagnostics for the current cursor line
+    current_line = true,
+  },
 })
 
 local o = vim.o
@@ -42,20 +42,20 @@ vim.opt.isfname:append("@-@")
 
 o.updatetime = 50
 vim.on_key(function(char)
-	if vim.fn.mode() == "n" then
-		local new_hlsearch =
-			vim.tbl_contains({ "<CR>", "n", "N", "z", "zz", "*", "#", "?", "/" }, vim.fn.keytrans(char))
-		if vim.opt.hlsearch:get() ~= new_hlsearch then
-			vim.opt.hlsearch = new_hlsearch
-		end
-	end
+  if vim.fn.mode() == "n" then
+    local new_hlsearch =
+        vim.tbl_contains({ "<CR>", "n", "N", "z", "zz", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+    if vim.opt.hlsearch:get() ~= new_hlsearch then
+      vim.opt.hlsearch = new_hlsearch
+    end
+  end
 end, vim.api.nvim_create_namespace("auto_hlsearch"))
 
 -- Copilot chat
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_hide_during_completion = false
 vim.g.copilot_proxy_strict_ssl = false
-vim.g.copilot_settings = { selectedCompletionModel = "gpt-4o-copilot" }
+vim.g.copilot_settings = { selectedCompletionModel = "gpt-41-copilot" }
 
 -- Comfy line numbers, apparently default setup is required to call :(
 require("comfy-line-numbers").setup()
