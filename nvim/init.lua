@@ -87,8 +87,8 @@ require("lualine").setup({
 require("nvim-ts-autotag").setup({
   opts = {
     -- Defaults
-    enable_close = true,         -- Auto close tags
-    enable_rename = true,        -- Auto rename pairs of tags
+    enable_close = true,           -- Auto close tags
+    enable_rename = true,          -- Auto rename pairs of tags
     enable_close_on_slash = false, -- Auto close on trailing </
   },
 })
@@ -115,6 +115,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+
 -- Diffview
 local actions = require("diffview.actions")
 require("diffview").setup({
@@ -133,9 +134,9 @@ require("diffview").setup({
     },
   },
   file_panel = {
-    listing_style = "tree",         -- One of 'list' or 'tree'
-    tree_options = {                -- Only applies when listing_style is 'tree'
-      flatten_dirs = true,          -- Flatten dirs that only contain one single dir
+    listing_style = "tree",            -- One of 'list' or 'tree'
+    tree_options = {                   -- Only applies when listing_style is 'tree'
+      flatten_dirs = true,             -- Flatten dirs that only contain one single dir
       folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
     },
     win_config = {
@@ -162,23 +163,6 @@ chat.setup({
       full_diff = true,
     },
   },
-})
--- Apollo GraphQL
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'graphql',
-  callback = function(ev)
-    vim.lsp.start({
-      name = 'apollo-language-server',
-
-      -- If you're using a profile, you can append `'--profile', 'default'`
-      -- to this list (substitute `default` for your profile name)
-      cmd = { 'rover', 'lsp', '--supergraph-config', 'supergraph.yaml' },
-
-      -- Set the "root directory" to the parent directory of the file in the
-      -- current buffer (`ev.buf`) that contains a `supergraph.yaml` file.
-      root_dir = vim.fs.root(ev.buf, { 'supergraph.yaml' }),
-    })
-  end,
 })
 
 -- NVIM eslint
