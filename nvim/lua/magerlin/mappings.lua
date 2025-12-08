@@ -158,50 +158,18 @@ map({ "n", "v" }, "<leader>aq", function()
 end, { desc = "AI Question" })
 
 -- LSP
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(event)
-    local opts = { buffer = event.buf }
-    map("n", "gd", function()
-      vim.lsp.buf.definition()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Definition" }))
-
-    map("n", "gi", function()
-      vim.lsp.buf.implementation()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Implementation" }))
-
-    map("n", "K", function()
-      vim.lsp.buf.hover()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover" }))
-
-    map("n", "<leader>vws", function()
-      vim.lsp.buf.workspace_symbol()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Workspace Symbol" }))
-
-    map("n", "<leader>vd", function()
-      vim.diagnostic.setloclist()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Show Diagnostics" }))
-
-    map("n", "<leader>nd", function()
-      vim.diagnostic.goto_next()
-    end, vim.tbl_deep_extend("force", opts, { desc = "Next Diagnostic" }))
-
-    map("n", "<leader>pd", function()
-      vim.diagnostic.goto_prev()
-    end, vim.tbl_deep_extend("force", opts, { desc = "Previous Diagnostic" }))
-
-    map("n", "<leader>ca", function()
-      require("tiny-code-action").code_action()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Code Action" }))
-
-    map("n", "<leader>fr", function()
-      vim.lsp.buf.references()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP References" }))
-
-    map("n", "<leader>cr", ":IncRename " .. vim.fn.expand("<cword>"),
-      vim.tbl_deep_extend("force", opts, { desc = "LSP Rename" }))
-
-    map("i", "<C-h>", function()
-      vim.lsp.buf.signature_help()
-    end, vim.tbl_deep_extend("force", opts, { desc = "LSP Signature Help" }))
-  end,
-})
+map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
+map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })
+--map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+map("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbol" })
+map("n", "<leader>vd", vim.diagnostic.setloclist, { desc = "LSP Show Diagnostics" })
+map("n", "<leader>nd", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+map("n", "<leader>pd", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
+map("n", "<leader>ca", function()
+  require("tiny-code-action").code_action()
+end, { desc = "LSP Code Action" })
+map("n", "<leader>fr", vim.lsp.buf.references, { desc = "LSP References" })
+map("n", "<leader>cr", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
+map("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
