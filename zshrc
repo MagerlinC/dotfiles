@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
+alias vim="nvim"
 
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418

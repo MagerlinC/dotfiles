@@ -10,7 +10,7 @@ return {
         keymap = {
           jump_prev = "[[",
           jump_next = "]]",
-          accept = "<Tab>",
+          -- accept = "<Tab>",
           refresh = "gr",
           open = "<M-CR>",
         },

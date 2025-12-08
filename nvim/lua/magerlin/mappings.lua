@@ -52,20 +52,6 @@ end
 
 map("n", "<leader>bo", CloseAllButCurrentBuffer, { silent = true, desc = "Close all buffers except current" })
 
--- Telescope
-local builtin = require("telescope.builtin")
-map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
-map(
-  "n",
-  "<leader>hf",
-  "<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
-  { desc = "Telescope find hidden files" }
-)
-map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope search global" })
-map("n", "<leader>sfr", "<cmd>:Telescope frecency<CR>", { desc = "Telescope frecency" })
--- map("n", "<leader>sgb", builtin.git_branches, { desc = "Telescope search git branches" })
-map("n", "<leader>sb", builtin.buffers, { desc = "Telescope search buffers" })
-
 -- Harpoon
 local harpoon = require("harpoon")
 harpoon:setup()
@@ -153,8 +139,6 @@ map("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>", { desc = "Open DiffView" })
 map("n", "<leader>dvc", "<cmd>:DiffviewClose<CR>", { desc = "Close DiffView" })
 map("n", "<leader>dvd", "<cmd>:DiffviewOpen dev<CR>", { desc = "Open DiffView against dev" })
 
--- Floating CMDLine
-map("n", "Q", ":Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" })
 
 -- Copilot chat
 local chat = require("CopilotChat")

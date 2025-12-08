@@ -2,7 +2,7 @@ vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" }, -- Recognize 'vim' as a global variable
+        globals = { "vim", "Snacks" }, -- Recognize 'vim' as a global variable
       },
     },
   },
@@ -151,7 +151,7 @@ require("diffview").setup({
 local chat = require("CopilotChat")
 local select = require("CopilotChat.select")
 chat.setup({
-  model = "claude-3.7-sonnet",
+  model = "gpt-4.1",
   references_display = "write",
   debug = false,
   question_header = "Mikkel",

@@ -1,8 +1,6 @@
 return {
   "GustavEikaas/easy-dotnet.nvim",
-  -- 'nvim-telescope/telescope.nvim' or 'ibhagwan/fzf-lua' or 'folke/snacks.nvim'
-  -- are highly recommended for a better experience
-  dependencies = { "nvim-lua/plenary.nvim", 'nvim-telescope/telescope.nvim', },
+  dependencies = { "nvim-lua/plenary.nvim", 'folke/snacks.nvim', },
   config = function()
     local function get_secret_path(secret_guid)
       local path = ""
@@ -115,10 +113,7 @@ return {
       },
       -- choose which picker to use with the plugin
       -- possible values are "telescope" | "fzf" | "snacks" | "basic"
-      -- if no picker is specified, the plugin will determine
-      -- the available one automatically with this priority:
-      -- telescope -> fzf -> snacks ->  basic
-      picker = "telescope",
+      picker = "snacks",
       background_scanning = true,
       diagnostics = {
         default_severity = "error",
