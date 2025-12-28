@@ -52,7 +52,7 @@ vim.on_key(function(char)
 end, vim.api.nvim_create_namespace("auto_hlsearch"))
 
 -- Copilot chat
-vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_no_tab_map = true WAT
 vim.g.copilot_hide_during_completion = false
 vim.g.copilot_proxy_strict_ssl = false
 vim.g.copilot_settings = { selectedCompletionModel = "gpt-41-copilot" }
