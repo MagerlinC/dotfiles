@@ -136,7 +136,7 @@ end, { desc = "Previous todo comment" })
 
 -- DiffView
 map("n", "<leader>dv", "<cmd>:CodeDiff<CR>", { desc = "Open Diff" })
-map("n", "<leader>dvd", "<cmd>:CodeDiff dev<CR>", { desc = "Open Diff with dev" })
+map("n", "<leader>dvd", "<cmd>:CodeDiff file dev<CR>", { desc = "Open Diff with dev" })
 
 -- Copilot chat
 local chat = require("CopilotChat")
