@@ -59,11 +59,11 @@ function search() {
 }
 
 function newpr () {
-  open $(github_project_root)/pull/new/$(current_branch)/
+  open $(github_project_root)/pull/new/$(git_current_branch)/
 }
 
 function openpr () {
-  open $(github_project_root)/pull/$(current_branch)/
+  open $(github_project_root)/pull/$(git_current_branch)/
 }
 
 ### ComplyCloud specific stuff ###
