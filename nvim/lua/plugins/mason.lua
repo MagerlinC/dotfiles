@@ -5,7 +5,7 @@ return {
       --		"csharp_ls", testing out easy-dotnet
       "yamlls",
       "gh_actions_ls",
-      "tsgo",
+      "vtsls",
       "eslint",
       "lua_ls",
       "jsonls",
