@@ -1,8 +1,5 @@
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets" },
-
   -- use a release tag to download pre-built binaries
   version = "1.*",
 
@@ -39,17 +36,17 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "easy-dotnet", "buffer" },
+      providers = {
+        ["easy-dotnet"] = {
+          name = "easy-dotnet",
+          enabled = true,
+          module = "easy-dotnet.completion.blink",
+          score_offset = 10000,
+          async = true,
+        },
+      },
     },
-    -- providers = {
-    --   ["easy-dotnet"] = {
-    --     name = "easy-dotnet",
-    --     enabled = true,
-    --     module = "easy-dotnet.completion.blink",
-    --     score_offset = 10000,
-    --     async = true,
-    --   },
-    -- },
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
 }

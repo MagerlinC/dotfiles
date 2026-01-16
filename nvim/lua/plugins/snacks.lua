@@ -24,5 +24,6 @@ return {
       end,
       desc = "Grep"
     },
+    { "<leader>vs", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
   }
 }
