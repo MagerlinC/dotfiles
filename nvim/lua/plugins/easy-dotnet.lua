@@ -5,6 +5,9 @@ return {
     local dotnet = require("easy-dotnet")
     -- Options are not required
     dotnet.setup({
+      server = {
+        log_level = "Verbose",
+      },
       lsp = {
         enabled = true,            -- Enable builtin roslyn lsp
         roslynator_enabled = true, -- Automatically enable roslynator analyzer
