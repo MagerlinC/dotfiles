@@ -1,52 +1,52 @@
 vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim", "Snacks" }, -- Recognize 'vim' as a global variable
-      },
-    },
-  },
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim", "Snacks" }, -- Recognize 'vim' as a global variable
+			},
+		},
+	},
 })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
 vim.opt.rtp:prepend(lazypath)
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
-  end,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+	end,
 })
 
 -- Restore cursor to file position in previous editing session
 vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function(args)
-    local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
-    local line_count = vim.api.nvim_buf_line_count(args.buf)
-    if mark[1] > 0 and mark[1] <= line_count then
-      vim.cmd('normal! g`"zz')
-    end
-  end,
+	callback = function(args)
+		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+		local line_count = vim.api.nvim_buf_line_count(args.buf)
+		if mark[1] > 0 and mark[1] <= line_count then
+			vim.cmd('normal! g`"zz')
+		end
+	end,
 })
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 require("lazy").setup("plugins", {
-  change_detection = {
-    notify = false,
-  },
+	change_detection = {
+		notify = false,
+	},
 })
 
 require("magerlin.mappings")
@@ -58,39 +58,39 @@ vim.cmd("hi IlluminatedWordRead guibg=none gui=underline")
 vim.cmd("hi IlluminatedWordWrite guibg=none gui=underline")
 
 require("nvim-highlight-colors").setup({
-  enable_named_colors = false,
+	enable_named_colors = false,
 })
 
 require("lualine").setup({
-  options = {
-    theme = "catppuccin",
-    section_separators = "",
-    component_separators = "",
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
-    lualine_c = { "filename" },
-    lualine_x = { "fileformat", "filetype" },
-    lualine_z = { "location" },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { "filename" },
-    lualine_x = { "location" },
-    lualine_y = {},
-    lualine_z = {},
-  },
+	options = {
+		theme = "catppuccin",
+		section_separators = "",
+		component_separators = "",
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch" },
+		lualine_c = { "filename" },
+		lualine_x = { "fileformat", "filetype" },
+		lualine_z = { "location" },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
 })
 
 require("nvim-ts-autotag").setup({
-  opts = {
-    -- Defaults
-    enable_close = true,           -- Auto close tags
-    enable_rename = true,          -- Auto rename pairs of tags
-    enable_close_on_slash = false, -- Auto close on trailing </
-  },
+	opts = {
+		-- Defaults
+		enable_close = true, -- Auto close tags
+		enable_rename = true, -- Auto rename pairs of tags
+		enable_close_on_slash = false, -- Auto close on trailing </
+	},
 })
 
 -- Nvim DAP
@@ -106,36 +106,36 @@ sign("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped",
 dapui.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+	dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
 end
 
--- Copilot chat
-local chat = require("CopilotChat")
-local select = require("CopilotChat.select")
-chat.setup({
-  model = "gpt-4.1",
-  references_display = "write",
-  debug = false,
-  question_header = "Mikkel",
-  selection = select.visual,
-  context = "buffers",
-  mappings = {
-    reset = false,
-    show_diff = {
-      full_diff = true,
-    },
-  },
-})
+-- -- Copilot chat
+-- local chat = require("CopilotChat")
+-- local select = require("CopilotChat.select")
+-- chat.setup({
+--   model = "gpt-4.1",
+--   references_display = "write",
+--   debug = false,
+--   question_header = "Mikkel",
+--   selection = select.visual,
+--   context = "buffers",
+--   mappings = {
+--     reset = false,
+--     show_diff = {
+--       full_diff = true,
+--     },
+--   },
+-- })
 
 -- NVIM eslint
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-  command = "silent! LspEslintFixAll",
-  group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	command = "silent! LspEslintFixAll",
+	group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
 })

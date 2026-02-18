@@ -39,15 +39,15 @@ map("n", "<leader>gb", ":GitBlameToggle<CR>", { silent = true, desc = "Git blame
 -- Closing buffers
 map("n", "<leader>bd", ":bd<CR>", { desc = "close current buffer" })
 CloseAllButCurrentBuffer = function()
-  local current_buf = vim.fn.bufnr()
-  local current_win = vim.fn.win_getid()
-  local bufs = vim.fn.getbufinfo({ buflisted = 1 })
-  for _, buf in ipairs(bufs) do
-    if buf.bufnr ~= current_buf then
-      vim.cmd("silent! bdelete " .. buf.bufnr)
-    end
-  end
-  vim.fn.win_gotoid(current_win)
+	local current_buf = vim.fn.bufnr()
+	local current_win = vim.fn.win_getid()
+	local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+	for _, buf in ipairs(bufs) do
+		if buf.bufnr ~= current_buf then
+			vim.cmd("silent! bdelete " .. buf.bufnr)
+		end
+	end
+	vim.fn.win_gotoid(current_win)
 end
 
 map("n", "<leader>bo", CloseAllButCurrentBuffer, { silent = true, desc = "Close all buffers except current" })
@@ -57,43 +57,43 @@ local harpoon = require("harpoon")
 harpoon:setup()
 
 map("n", "<leader>H", function()
-  harpoon:list():add()
+	harpoon:list():add()
 end)
 map("n", "<leader>h", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
 map("n", "<leader>1", function()
-  harpoon:list():select(1)
+	harpoon:list():select(1)
 end, { desc = "Harpoon goto mark 1" })
 map("n", "<leader>2", function()
-  harpoon:list():select(2)
+	harpoon:list():select(2)
 end, { desc = "Harpoon goto mark 2" })
 map("n", "<leader>3", function()
-  harpoon:list():select(3)
+	harpoon:list():select(3)
 end, { desc = "Harpoon goto mark 3" })
 map("n", "<leader>4", function()
-  harpoon:list():select(4)
+	harpoon:list():select(4)
 end, { desc = "Harpoon goto mark 4" })
 map("n", "<leader>5", function()
-  harpoon:list():select(5)
+	harpoon:list():select(5)
 end, { desc = "Harpoon goto mark 5" })
 
 -- NeoTest
 map("n", "<leader>tr", function()
-  require("neotest").run.run()
+	require("neotest").run.run()
 end, { desc = "Run nearest test" })
 
 map("n", "<leader>tf", function()
-  require("neotest").run.run(vim.fn.expand("%"))
+	require("neotest").run.run(vim.fn.expand("%"))
 end, { desc = "Run all tests in file" })
 
 map("n", "<leader>ts", function()
-  require("neotest").summary.toggle()
+	require("neotest").summary.toggle()
 end, { desc = "toggle test summary" })
 
 map("n", "<leader>to", function()
-  require("neotest").output_panel.toggle()
+	require("neotest").output_panel.toggle()
 end, { desc = "toggle output panel" })
 
 -- Oil
@@ -122,40 +122,40 @@ map("n", "<leader>di", "<cmd>:DapStepInto<CR>", { desc = "DAP Step Into" })
 map("n", "<leader>dt", "<cmd>:DapTerminate<CR>", { desc = "DAP Terminate" })
 
 map("n", "<leader>dui", function()
-  require("dapui").toggle()
+	require("dapui").toggle()
 end, { desc = "DAP UI" })
 
 -- TODOs
 map("n", "<leader>nt", function()
-  require("todo-comments").jump_next()
+	require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 
 map("n", "<leader>pt", function()
-  require("todo-comments").jump_prev()
+	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
 -- DiffView
 map("n", "<leader>dv", "<cmd>:CodeDiff<CR>", { desc = "Open Diff" })
 map("n", "<leader>dvd", "<cmd>:CodeDiff file dev<CR>", { desc = "Open Diff with dev" })
 
--- Copilot chat
-local chat = require("CopilotChat")
-map({ "n" }, "<leader>aa", chat.toggle, { desc = "AI Toggle" })
-map({ "v" }, "<leader>aa", chat.open, { desc = "AI Open" })
-map({ "n" }, "<leader>ax", chat.reset, { desc = "AI Reset" })
-map({ "n" }, "<leader>as", chat.stop, { desc = "AI Stop" })
-map({ "n", "v" }, "<leader>ap", chat.select_prompt, { desc = "AI Prompts" })
-map({ "n", "v" }, "<leader>aq", function()
-  vim.ui.input({
-    prompt = "AI Question> ",
-  }, function(input)
-    if input ~= "" then
-      chat.ask(input)
-    end
-  end)
-end, { desc = "AI Question" })
-
--- LSP
+-- -- Copilot chat
+-- local chat = require("CopilotChat")
+-- map({ "n" }, "<leader>aa", chat.toggle, { desc = "AI Toggle" })
+-- map({ "v" }, "<leader>aa", chat.open, { desc = "AI Open" })
+-- map({ "n" }, "<leader>ax", chat.reset, { desc = "AI Reset" })
+-- map({ "n" }, "<leader>as", chat.stop, { desc = "AI Stop" })
+-- map({ "n", "v" }, "<leader>ap", chat.select_prompt, { desc = "AI Prompts" })
+-- map({ "n", "v" }, "<leader>aq", function()
+--   vim.ui.input({
+--     prompt = "AI Question> ",
+--   }, function(input)
+--     if input ~= "" then
+--       chat.ask(input)
+--     end
+--   end)
+-- end, { desc = "AI Question" })
+--
+-- -- LSP
 map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
 map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })
 --map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
@@ -164,10 +164,10 @@ map("n", "<leader>vd", vim.diagnostic.setloclist, { desc = "LSP Show Diagnostics
 map("n", "<leader>nd", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 map("n", "<leader>pd", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 map("n", "<leader>ca", function()
-  require("tiny-code-action").code_action()
+	require("tiny-code-action").code_action()
 end, { desc = "LSP Code Action" })
 map("n", "<leader>fr", vim.lsp.buf.references, { desc = "LSP References" })
 map("n", "<leader>cr", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
+	return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
 map("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
