@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
+export PATH="$HOME/.dotnet/tools:$PATH"
 alias vim="nvim"
 
 
