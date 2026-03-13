@@ -133,9 +133,14 @@ end
 --   },
 -- })
 
--- NVIM eslint
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
--- 	command = "silent! LspEslintFixAll",
--- 	group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
--- })
+-- Remove unused imports on save via vtsls code action
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+  group = vim.api.nvim_create_augroup("TsRemoveUnusedImports", {}),
+  callback = function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = { only = { "source.removeUnused.ts" }, diagnostics = {} },
+    })
+  end,
+})
