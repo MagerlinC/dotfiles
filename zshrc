@@ -3,6 +3,13 @@ export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
 alias vim="nvim"
 
+
+# Docker alias
+alias dcb="docker compose build"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dcdv="docker compose down -v"
+
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
 type starship_zle-keymap-select >/dev/null || \

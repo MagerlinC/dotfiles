@@ -4,22 +4,22 @@ tmux new -s work -d
 
 # Serve window
 tmux rename-window -t work serve
-tmux send-keys -t work 'cd ~/git/Cirrus/frontend' C-m
+tmux send-keys -t work 'cd ~/git/' C-m
 
 # Cmds window
 tmux new-window -t work
 tmux rename-window -t work cmds
-tmux send-keys -t work 'cd ~/git/Cirrus/' C-m
+tmux send-keys -t work 'cd ~/git/' C-m
 
 # Main editor windows
 tmux new-window -t work
 tmux rename-window -t work FE
-tmux send-keys -t work 'cd ~/git/Cirrus/frontend' C-m
+tmux send-keys -t work 'cd ~/git/' C-m
 tmux send-keys -t work 'nvim' C-m
 
 tmux new-window -t work
 tmux rename-window -t work BE
-tmux send-keys -t work 'cd ~/git/Cirrus/backend' C-m
+tmux send-keys -t work 'cd ~/git/' C-m
 tmux send-keys -t work 'nvim' C-m
 
 # Config session

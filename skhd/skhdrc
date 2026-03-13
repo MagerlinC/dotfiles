@@ -7,7 +7,7 @@ ctrl + shift + alt - w : open -a WezTerm
 ctrl + shift + alt - u : open -a Unity 
 ctrl + shift + alt - i : open -a iTerm
 ctrl + shift + alt - r : open -a Rider 
-ctrl + shift + alt - b : open -a "Microsoft Edge"
+ctrl + shift + alt - b : open -a Zen 
 ctrl + shift + alt - y : open https://www.youtube.com
 ctrl + shift + alt - m : open https://www.google.com/maps
 ctrl + shift + alt - g : open https://www.github.com

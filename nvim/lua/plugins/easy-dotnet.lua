@@ -9,20 +9,13 @@ return {
         log_level = "Verbose",
       },
       lsp = {
-        enabled = true,            -- Enable builtin roslyn lsp
-        roslynator_enabled = true, -- Automatically enable roslynator analyzer
-        analyzer_assemblies = {},  -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
+        enabled = true,                      -- Enable builtin roslyn lsp
+        preload_roslyn = true,               -- Start loading roslyn before any buffer is opened
+        roslynator_enabled = true,           -- Automatically enable roslynator analyzer
+        easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
+        auto_refresh_codelens = true,
+        analyzer_assemblies = {},            -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
         config = {},
-      },
-      debugger = {
-        -- Path to custom coreclr DAP adapter
-        -- easy-dotnet-server falls back to its own netcoredbg binary if bin_path is nil
-        bin_path = nil,
-        apply_value_converters = true,
-        auto_register_dap = true,
-        mappings = {
-          open_variable_viewer = { lhs = "T", desc = "open variable viewer" },
-        },
       },
       picker = "snacks",
     })
