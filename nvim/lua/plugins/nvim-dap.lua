@@ -6,7 +6,6 @@ return {
       opts = function(_, opts)
         opts.ensure_installed = opts.ensure_installed or {}
         table.insert(opts.ensure_installed, "js-debug-adapter")
-        table.insert(opts.ensure_installed, "netcoredbg")
       end,
     },
   },
@@ -30,9 +29,6 @@ return {
 
     vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Go down stack frame" })
     vim.keymap.set("n", "<leader>dk", dap.up, { desc = "Go up stack frame" })
-
-    -- .NET specific setup using `easy-dotnet`
-    require("easy-dotnet.netcoredbg").register_dap_variables_viewer() -- special variables viewer specific for .NET
   end,
   opts = function()
     local dap = require("dap")
@@ -60,24 +56,6 @@ return {
         end
       end
     end
-
-    --    Debugging C# with netcoredbg
-    dap.adapters.coreclr = {
-      type = "executable",
-      command = "netcoredbg",
-      args = { "--interpreter=vscode" },
-    }
-
-    dap.configurations.cs = {
-      {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-        end,
-      },
-    }
 
     local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
 

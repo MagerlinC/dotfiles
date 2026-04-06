@@ -2,10 +2,9 @@
 shift + alt - r : skhd --restart-service
 
 # open applications and websites
-ctrl + shift + alt - t : open -a "Microsoft Teams"
+ctrl + shift + alt - d : open -a Docker
 ctrl + shift + alt - w : open -a WezTerm
 ctrl + shift + alt - u : open -a Unity 
-ctrl + shift + alt - i : open -a iTerm
 ctrl + shift + alt - r : open -a Rider 
 ctrl + shift + alt - b : open -a Zen 
 ctrl + shift + alt - y : open https://www.youtube.com
@@ -13,4 +12,4 @@ ctrl + shift + alt - m : open https://www.google.com/maps
 ctrl + shift + alt - g : open https://www.github.com
 ctrl + shift + alt - s : open -a Slack 
 ctrl + shift + alt - p : open -a 1password 
-
+ctrl + shift + alt - t : open -a ThunderBird 

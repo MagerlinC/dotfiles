@@ -63,7 +63,7 @@ require("nvim-highlight-colors").setup({
 
 require("lualine").setup({
   options = {
-    theme = "catppuccin",
+    theme = "catppuccin-mocha",
     section_separators = "",
     component_separators = "",
   },
@@ -92,28 +92,6 @@ require("nvim-ts-autotag").setup({
     enable_close_on_slash = false, -- Auto close on trailing </
   },
 })
-
--- Nvim DAP
-local dap = require("dap")
-local dapui = require("dapui")
-local sign = vim.fn.sign_define
-sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
-sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
-sign("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
-
--- Nvim DAP UI
-dapui.setup()
-
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
 
 -- -- Copilot chat
 -- local chat = require("CopilotChat")
