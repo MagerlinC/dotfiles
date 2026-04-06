@@ -27,8 +27,8 @@ map("n", "<C-u>", "<C-u>zz")
 
 -- Clipboard saving paste/delete
 map("x", "<leader>p", '"_dP', { silent = true, desc = "Paste over keeping clipboard" })
-map("n", "<leader>d", '"_d', { silent = true, desc = "Delete keeping clipboard" })
-map("v", "<leader>d", '"_d', { silent = true, desc = "Delete keeping clipboard" })
+map("n", "<leader>x", '"_d', { silent = true, desc = "Delete keeping clipboard" })
+map("v", "<leader>x", '"_d', { silent = true, desc = "Delete keeping clipboard" })
 
 -- Dont die on Q
 map("n", "Q", "<nop>")
@@ -113,18 +113,6 @@ map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
 map("n", "L", "<cmd>BufferNext<CR>", { desc = "Next buffer" })
 map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
 
--- Nvim DAP
-map("n", "<leader>db", "<cmd>:DapToggleBreakpoint<CR>", { desc = "DAP toggle breakpoint" })
-map("n", "<leader>dB", "<cmd>:DapToggleClearBreakpoints<CR>", { desc = "DAP clear breakpoints" })
-map("n", "<leader>ds", "<cmd>:DapStepOver<CR>", { desc = "DAP Step Over" })
-map("n", "<leader>dc", "<cmd>:DapContinue<CR>", { desc = "DAP continue" })
-map("n", "<leader>di", "<cmd>:DapStepInto<CR>", { desc = "DAP Step Into" })
-map("n", "<leader>dt", "<cmd>:DapTerminate<CR>", { desc = "DAP Terminate" })
-
-map("n", "<leader>dui", function()
-  require("dapui").toggle()
-end, { desc = "DAP UI" })
-
 -- TODOs
 map("n", "<leader>nt", function()
   require("todo-comments").jump_next()
@@ -138,23 +126,6 @@ end, { desc = "Previous todo comment" })
 map("n", "<leader>dv", "<cmd>:CodeDiff<CR>", { desc = "Open Diff" })
 map("n", "<leader>dvd", "<cmd>:CodeDiff file main<CR>", { desc = "Open Diff with main" })
 
--- -- Copilot chat
--- local chat = require("CopilotChat")
--- map({ "n" }, "<leader>aa", chat.toggle, { desc = "AI Toggle" })
--- map({ "v" }, "<leader>aa", chat.open, { desc = "AI Open" })
--- map({ "n" }, "<leader>ax", chat.reset, { desc = "AI Reset" })
--- map({ "n" }, "<leader>as", chat.stop, { desc = "AI Stop" })
--- map({ "n", "v" }, "<leader>ap", chat.select_prompt, { desc = "AI Prompts" })
--- map({ "n", "v" }, "<leader>aq", function()
---   vim.ui.input({
---     prompt = "AI Question> ",
---   }, function(input)
---     if input ~= "" then
---       chat.ask(input)
---     end
---   end)
--- end, { desc = "AI Question" })
---
 -- -- LSP
 map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
 map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })

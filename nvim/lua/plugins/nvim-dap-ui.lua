@@ -13,6 +13,8 @@ return {
 
     dapui.setup()
 
+    vim.keymap.set("n", "<leader>dui", dapui.toggle, { desc = "Toggle DAP UI" })
+
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end

@@ -37,7 +37,7 @@ o.termguicolors = true
 o.completeopt = "fuzzy"
 o.winborder = "none"
 
-o.signcolumn = "number"
+o.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 o.updatetime = 50

@@ -12,26 +12,7 @@ return {
   config = function()
     local dap = require "dap"
 
-    -- Keymaps for controlling the debugger
-    vim.keymap.set("n", "<leader>q", function()
-      dap.terminate()
-      dap.clear_breakpoints()
-    end, { desc = "Terminate and clear breakpoints" })
-
-    vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Start/continue debugging" })
-
-    vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
-    vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Step over" })
-    vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Step into" })
-    vim.keymap.set("n", "<leader>dsO", dap.step_out, { desc = "Step out" })
-
-    vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Toggle DAP REPL" })
-
-    vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Go down stack frame" })
-    vim.keymap.set("n", "<leader>dk", dap.up, { desc = "Go up stack frame" })
-  end,
-  opts = function()
-    local dap = require("dap")
+    -- Adapters
     if not dap.adapters["pwa-node"] then
       dap.adapters["pwa-node"] = {
         type = "server",
@@ -84,5 +65,20 @@ return {
         }
       end
     end
+
+    -- Keymaps
+    vim.keymap.set("n", "<leader>q", function()
+      dap.terminate()
+      dap.clear_breakpoints()
+    end, { desc = "Terminate and clear breakpoints" })
+
+    vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Start/continue debugging" })
+    vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+    vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Step over" })
+    vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Step into" })
+    vim.keymap.set("n", "<leader>dsO", dap.step_out, { desc = "Step out" })
+    vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Toggle DAP REPL" })
+    vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Go down stack frame" })
+    vim.keymap.set("n", "<leader>dk", dap.up, { desc = "Go up stack frame" })
   end,
 }
