@@ -55,12 +55,30 @@ require("magerlin.mappings")
 require("magerlin.options")
 
 -- Native LSP completion (replaces blink.cmp)
+-- Use vim.schedule to defer the buftype check, as LspAttach can fire before
+-- buftype/filetype are set (e.g. snacks picker, agentic UI)
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client and client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    if not client or not client:supports_method("textDocument/completion") then
+      return
     end
+    local buf = ev.buf
+    local client_id = client.id
+    vim.schedule(function()
+      if vim.bo[buf].buftype == "" then
+        vim.lsp.completion.enable(true, client_id, buf, { autotrigger = true })
+      end
+    end)
+  end,
+})
+
+-- Disable LSP completion autotrigger in plugin UI buffers by clearing the
+-- per-buffer augroup that vim.lsp.completion sets up (nvim.lsp.completion_{bufnr})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "snacks_picker_input", "AgenticInput" },
+  callback = function(ev)
+    pcall(vim.api.nvim_clear_autocmds, { group = "nvim.lsp.completion_" .. ev.buf })
   end,
 })
 

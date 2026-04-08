@@ -36,7 +36,6 @@ o.termguicolors = true
 
 o.completeopt = "menu,menuone,noselect,fuzzy"
 o.winborder = "none"
-o.autocomplete = true
 o.pumborder = "rounded"
 
 o.signcolumn = "yes"

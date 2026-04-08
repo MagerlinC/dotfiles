@@ -128,6 +128,8 @@ map("n", "<leader>dvd", "<cmd>:CodeDiff file main<CR>", { desc = "Open Diff with
 
 -- LSP (0.12 provides gra=actions, gri=impl, grn=rename, grr=refs, grt=type, gO=symbols, C-s=sig help)
 map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
+map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })
+map("n", "<leader>fr", vim.lsp.buf.references, { desc = "LSP Find References" })
 map("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbol" })
 map("n", "<leader>vd", vim.diagnostic.setloclist, { desc = "LSP Show Diagnostics" })
 map("n", "<leader>nd", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next Diagnostic" })
