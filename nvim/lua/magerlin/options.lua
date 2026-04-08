@@ -15,7 +15,7 @@ o.smartcase = true
 
 o.scrolloff = 8
 o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 o.foldenable = false
 
 o.expandtab = true
@@ -34,8 +34,10 @@ o.backup = false
 o.incsearch = true
 o.termguicolors = true
 
-o.completeopt = "fuzzy"
+o.completeopt = "menu,menuone,noselect,fuzzy"
 o.winborder = "none"
+o.autocomplete = true
+o.pumborder = "rounded"
 
 o.signcolumn = "yes"
 vim.opt.isfname:append("@-@")

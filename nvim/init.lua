@@ -9,7 +9,7 @@ vim.lsp.config("lua_ls", {
 })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -25,7 +25,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
 
@@ -49,8 +49,20 @@ require("lazy").setup("plugins", {
   },
 })
 
+require("vim._core.ui2").enable()
+
 require("magerlin.mappings")
 require("magerlin.options")
+
+-- Native LSP completion (replaces blink.cmp)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+  end,
+})
 
 vim.cmd.colorscheme("catppuccin-mocha")
 vim.cmd("hi IlluminatedWordText guibg=none gui=underline")
@@ -59,29 +71,6 @@ vim.cmd("hi IlluminatedWordWrite guibg=none gui=underline")
 
 require("nvim-highlight-colors").setup({
   enable_named_colors = false,
-})
-
-require("lualine").setup({
-  options = {
-    theme = "catppuccin-mocha",
-    section_separators = "",
-    component_separators = "",
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
-    lualine_c = { "filename" },
-    lualine_x = { "fileformat", "filetype" },
-    lualine_z = { "location" },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { "filename" },
-    lualine_x = { "location" },
-    lualine_y = {},
-    lualine_z = {},
-  },
 })
 
 require("nvim-ts-autotag").setup({

@@ -4,7 +4,6 @@ return {
 	priority = 1000,
 	opts = {
 		integrations = {
-			blink_cmp = true,
 			gitsigns = true,
 			treesitter = true,
 		},
@@ -12,6 +11,7 @@ return {
 			return {
 				LineNrAbove = { fg = colors.overlay2 },
 				LineNrBelow = { fg = colors.overlay2 },
+				PmenuBorder = { fg = colors.surface2 },
 			}
 		end,
 	},

@@ -1,6 +1,7 @@
 return {
   "mason-org/mason-lspconfig.nvim",
   opts = {
+    automatic_enable = true,
     ensure_installed = {
       --		"csharp_ls", testing out easy-dotnet
       "yamlls",
