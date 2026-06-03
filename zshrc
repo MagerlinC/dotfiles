@@ -2,7 +2,12 @@ export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
 export PATH="$HOME/.dotnet/tools:$PATH"
+# Use homebrew Python
+export PATH="/opt/homebrew/bin:$PATH"
 alias vim="nvim"
+alias pgc="pinegrove-cli"
+alias pgssh="ssh -i ~/.ssh/enclave ops@77.42.89.231"
+alias mlssh="ssh -i ~/.ssh/martin-linux mac@100.126.19.88"
 
 
 # Docker alias
@@ -99,3 +104,6 @@ tsapi () {
 	dotnet run --project ./backend/Utils/TsContractsGeneratorSwagger/TsContractsGeneratorSwagger.csproj
 	cd - > /dev/null || exit
 }
+
+# Created by `pipx` on 2026-05-26 09:23:30
+export PATH="$PATH:/Users/mac/.local/bin"

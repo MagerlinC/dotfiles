@@ -13,6 +13,12 @@ return {
       desc = "Toggle Agentic Chat"
     },
     {
+      "<leader>as",
+      function() require("agentic").stop_generation() end,
+      mode = { "n", "v" },
+      desc = "Stop Agentic Response"
+    },
+    {
       "<leader>aa",
       function() require("agentic").add_selection_or_file_to_context() end,
       mode = { "n", "v" },

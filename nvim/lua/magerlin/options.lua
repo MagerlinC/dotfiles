@@ -14,9 +14,12 @@ o.ignorecase = true
 o.smartcase = true
 
 o.scrolloff = 8
+
 o.foldmethod = "expr"
 o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-o.foldenable = false
+o.foldenable = true
+o.foldlevel = 99
+o.foldlevelstart = 99
 
 o.expandtab = true
 o.shiftwidth = 2
