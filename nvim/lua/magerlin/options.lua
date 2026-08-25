@@ -10,6 +10,9 @@ o.nu = true
 o.relativenumber = true
 o.clipboard = "unnamed"
 
+o.spell = true
+o.spelllang = "en"
+
 o.ignorecase = true
 o.smartcase = true
 

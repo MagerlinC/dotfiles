@@ -1,12 +1,13 @@
 export ZSH="$HOME/.oh-my-zsh"
-export CDPATH=".:$HOME/git:$HOME/git/Cirrus"
+export CDPATH=".:$HOME/git"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
 export PATH="$HOME/.dotnet/tools:$PATH"
 # Use homebrew Python
 export PATH="/opt/homebrew/bin:$PATH"
 alias vim="nvim"
 alias pgc="pinegrove-cli"
-alias pgssh="ssh -i ~/.ssh/enclave ops@77.42.89.231"
+alias pgssh="ssh -i ~/.ssh/enclave ops@94.130.39.6"
+alias pgsql="ssh -t -i ~/.ssh/enclave ops@94.130.39.6 'docker exec -it pinegrove-app-db psql -h localhost -U "pinegrove" -d "pinegrove" -W'" 
 alias mlssh="ssh -i ~/.ssh/martin-linux mac@100.126.19.88"
 
 

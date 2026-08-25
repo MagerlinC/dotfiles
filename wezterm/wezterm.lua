@@ -22,6 +22,7 @@ config.window_padding = { left = 8, bottom = 0, top = 8, right = 0 }
 
 -- config.macos_window_background_blur = 10
 config.native_macos_fullscreen_mode = false
+config.macos_fullscreen_extend_behind_notch = false
 
 -- setup toggle of top bar
 config.enable_tab_bar = false
