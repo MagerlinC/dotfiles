@@ -8,6 +8,11 @@ return {
 		init = function()
 			vim.g.barbar_auto_setup = false
 		end,
+		keys = {
+			{ "<leader>bp", ":BufferPick<CR>", desc = "Buffer pick" },
+			{ "L", "<cmd>BufferNext<CR>", desc = "Next buffer" },
+			{ "H", "<cmd>BufferPrevious<CR>", desc = "Previous buffer" },
+		},
 		opts = {
 			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
 			-- animation = true,

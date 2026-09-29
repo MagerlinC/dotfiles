@@ -2,6 +2,9 @@ return {
   "stevearc/oil.nvim",
   ---@module 'oil'
   ---@type oil.SetupOpts
+  keys = {
+    { "<leader>o", "<CMD>Oil<CR>", desc = "Open Oil" },
+  },
   opts = {
     keymaps = {
       ["gb"] = { "actions.parent", mode = "n" },

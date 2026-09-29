@@ -2,6 +2,10 @@ return {
   "esmuellert/codediff.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
   cmd = "CodeDiff",
+  keys = {
+    { "<leader>dv", "<cmd>CodeDiff<CR>", desc = "Open Diff" },
+    { "<leader>dvd", "<cmd>CodeDiff file main<CR>", desc = "Open Diff with main" },
+  },
   opts = {
     -- Keymaps in diff view
     keymaps = {

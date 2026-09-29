@@ -8,6 +8,12 @@ return {
     -- "nvim-neotest/neotest-jest",
     "thenbe/neotest-playwright",
   },
+  keys = {
+    { "<leader>tr", function() require("neotest").run.run() end, desc = "Run nearest test" },
+    { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run all tests in file" },
+    { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
+    { "<leader>to", function() require("neotest").output_panel.toggle() end, desc = "Toggle output panel" },
+  },
   config = function()
     require("neotest").setup({
       adapters = {

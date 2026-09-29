@@ -33,9 +33,6 @@ map("v", "<leader>x", '"_d', { silent = true, desc = "Delete keeping clipboard" 
 -- Dont die on Q
 map("n", "Q", "<nop>")
 
--- Git
-map("n", "<leader>gb", ":GitBlameToggle<CR>", { silent = true, desc = "Git blame" })
-
 -- Closing buffers
 map("n", "<leader>bd", ":bd<CR>", { desc = "close current buffer" })
 CloseAllButCurrentBuffer = function()
@@ -52,80 +49,6 @@ end
 
 map("n", "<leader>bo", CloseAllButCurrentBuffer, { silent = true, desc = "Close all buffers except current" })
 
--- Harpoon
-local harpoon = require("harpoon")
-harpoon:setup()
-
-map("n", "<leader>H", function()
-  harpoon:list():add()
-end)
-map("n", "<leader>h", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-
-map("n", "<leader>1", function()
-  harpoon:list():select(1)
-end, { desc = "Harpoon goto mark 1" })
-map("n", "<leader>2", function()
-  harpoon:list():select(2)
-end, { desc = "Harpoon goto mark 2" })
-map("n", "<leader>3", function()
-  harpoon:list():select(3)
-end, { desc = "Harpoon goto mark 3" })
-map("n", "<leader>4", function()
-  harpoon:list():select(4)
-end, { desc = "Harpoon goto mark 4" })
-map("n", "<leader>5", function()
-  harpoon:list():select(5)
-end, { desc = "Harpoon goto mark 5" })
-
--- NeoTest
-map("n", "<leader>tr", function()
-  require("neotest").run.run()
-end, { desc = "Run nearest test" })
-
-map("n", "<leader>tf", function()
-  require("neotest").run.run(vim.fn.expand("%"))
-end, { desc = "Run all tests in file" })
-
-map("n", "<leader>ts", function()
-  require("neotest").summary.toggle()
-end, { desc = "toggle test summary" })
-
-map("n", "<leader>to", function()
-  require("neotest").output_panel.toggle()
-end, { desc = "toggle output panel" })
-
--- Oil
-map("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil" })
-
--- Fugitive
-map("n", "<leader>gf", ":G fresh<CR>", { desc = "Git fresh" })
-map("n", "<leader>gmd", ":G merge origin dev<CR>", { desc = "Git merge dev" })
-map("n", "<leader>gs", ":G<CR>", { desc = "Git status" })
-map("n", "<leader>ga", ":G add . <CR>", { desc = "Git add all" })
-map("n", "<leader>gc", ":G commit<CR>", { desc = "Git commit" })
-map("n", "<leader>gp", ":G push<CR>", { desc = "Git push" })
-map("n", "<leader>gpl", ":G pull<CR>", { desc = "Git pull" })
-
--- Barbar
-map("n", "<leader>bp", ":BufferPick<CR>", { desc = "Buffer 1" })
-map("n", "L", "<cmd>BufferNext<CR>", { desc = "Next buffer" })
-map("n", "H", "<cmd>BufferPrevious<CR>", { desc = "Previous buffer" })
-
--- TODOs
-map("n", "<leader>nt", function()
-  require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-
-map("n", "<leader>pt", function()
-  require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
-
--- DiffView
-map("n", "<leader>dv", "<cmd>:CodeDiff<CR>", { desc = "Open Diff" })
-map("n", "<leader>dvd", "<cmd>:CodeDiff file main<CR>", { desc = "Open Diff with main" })
-
 -- LSP (0.12 provides gra=actions, gri=impl, grn=rename, grr=refs, grt=type, gO=symbols, C-s=sig help)
 map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
 map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })
@@ -134,9 +57,3 @@ map("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Sy
 map("n", "<leader>vd", vim.diagnostic.setloclist, { desc = "LSP Show Diagnostics" })
 map("n", "<leader>nd", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next Diagnostic" })
 map("n", "<leader>pd", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Previous Diagnostic" })
-map("n", "<leader>ca", function()
-  require("tiny-code-action").code_action()
-end, { desc = "LSP Code Action" })
-map("n", "<leader>cr", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })

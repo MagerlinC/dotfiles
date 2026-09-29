@@ -4,6 +4,9 @@ return {
     { "nvim-lua/plenary.nvim" },
   },
   event = "LspAttach",
+  keys = {
+    { "<leader>ca", function() require("tiny-code-action").code_action() end, desc = "LSP Code Action" },
+  },
   opts = {
     picker = {
       "buffer",

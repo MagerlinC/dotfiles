@@ -15,12 +15,12 @@ tmux send-keys -t work 'cd ~/git/' C-m
 tmux new-window -t work
 tmux rename-window -t work FE
 tmux send-keys -t work 'cd ~/git/' C-m
-tmux send-keys -t work 'nvim' C-m
+# tmux send-keys -t work 'nvim' C-m
 
 tmux new-window -t work
 tmux rename-window -t work BE
 tmux send-keys -t work 'cd ~/git/' C-m
-tmux send-keys -t work 'nvim' C-m
+# tmux send-keys -t work 'nvim' C-m
 
 # Config session
 tmux new -s config -d
