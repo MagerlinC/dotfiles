@@ -8,7 +8,7 @@ brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # Isolated development environments using Docker
 brew "docker-compose"
 # Modern, maintained replacement for ls
@@ -107,6 +107,8 @@ cask "spotify"
 cask "tailscale-app"
 # Customizable email client
 cask "thunderbird"
+# Multimedia player
+cask "vlc"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
 # Multiplayer code editor
@@ -116,3 +118,4 @@ cask "zen"
 cargo "tauri-cli"
 npm "@zed-industries/claude-code-acp"
 npm "ts-node"
+npm "typescript-language-server"

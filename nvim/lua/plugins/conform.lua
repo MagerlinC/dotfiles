@@ -12,6 +12,13 @@ return {
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 			csharp = { "csharpier", lsp_format = "fallback" },
+			markdown = { "markdownlint-cli2" },
+		},
+		formatters = {
+			["markdownlint-cli2"] = {
+				command = "npx",
+				prepend_args = { "-y", "markdownlint-cli2@0.23.3" },
+			},
 		},
 	},
 }

@@ -22,6 +22,19 @@ return {
     keymap = {
       preset = "enter",
       ["<C-y>"] = { "select_and_accept" },
+      ["<Tab>"] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          elseif vim.fn["copilot#GetDisplayedSuggestion"]().text ~= "" then
+            vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](), "in", false)
+          else
+            return false
+          end
+        end,
+        "snippet_forward",
+        "fallback",
+      },
     },
 
     appearance = {

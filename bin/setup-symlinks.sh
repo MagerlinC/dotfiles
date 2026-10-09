@@ -25,6 +25,8 @@ ln -nfs ~/dotfiles/refreshMFA.py ~/.aws/refreshMFA.py
 
 ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
+ln -nfs ~/dotfiles/.markdownlint-cli2.yaml ~/.markdownlint-cli2.yaml
+
 mkdir ~/.config/eza && ln -nfs ~/dotfiles/eza-catppuccin-theme.yml ~/.config/eza/theme.yml
 
 # initialize new settings
