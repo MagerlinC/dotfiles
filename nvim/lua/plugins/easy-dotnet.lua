@@ -9,13 +9,7 @@ return {
     local dotnet = require("easy-dotnet")
     dotnet.setup({
       lsp = {
-        enabled = true,
-        preload_roslyn = true,
-        roslynator_enabled = true,
-        easy_dotnet_analyzer_enabled = true,
-        auto_refresh_codelens = true,
-        analyzer_assemblies = {},
-        config = {},
+        enabled = false,
       },
       debugger = {
         auto_register_dap = true,

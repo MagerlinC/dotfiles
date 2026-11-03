@@ -12,9 +12,12 @@ return {
       end
     end
     via_npx(lint.linters["markdownlint-cli2"], { "-y", "markdownlint-cli2@0.23.3" })
-    via_npx(lint.linters.cspell, {
+    local cspell = lint.linters.cspell
+    via_npx(cspell, {
       "-y", "-p", "cspell@10.3.5", "-p", "@cspell/dict-da-dk@4.1.2", "cspell",
     })
+    table.insert(cspell.args, "--locale")
+    table.insert(cspell.args, "en,da-DK")
 
     lint.linters_by_ft = { markdown = { "markdownlint-cli2", "cspell" } }
 

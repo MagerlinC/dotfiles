@@ -3,7 +3,7 @@ return {
   opts = {
     automatic_enable = true,
     ensure_installed = {
-      --		"csharp_ls", testing out easy-dotnet
+      "csharp_ls",
       "yamlls",
       "gh_actions_ls",
       "vtsls",

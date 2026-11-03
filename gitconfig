@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Mikkel Agerlin
-	email = ma@complycloud.com
+	email = mikkel_ac@hotmail.com
 	signingkey = 9861376C31AB74DC4FF2431E4A1A59C8E3090B4D
 [core]
 	editor = nvim
