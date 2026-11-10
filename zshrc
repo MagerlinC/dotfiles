@@ -30,7 +30,6 @@ type starship_zle-keymap-select >/dev/null || \
     eval "$(starship init zsh)"
   }
 
-source $ZSH/oh-my-zsh.sh
 set -o vi
 
 GPG_TTY=$(tty)
