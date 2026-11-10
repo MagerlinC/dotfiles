@@ -12,6 +12,11 @@ hyprpolkitagent        # polkit agent: needed for 1Password "unlock with system 
 
 # --- gaming ---
 steam                  # multilib; NVIDIA 32-bit libs (lib32-nvidia-utils) are already installed by CachyOS
+cachyos-gaming-meta    # proton-cachyos, wine-cachyos, umu-launcher, protontricks, winetricks, common 32-bit game libs
+gamescope              # micro-compositor for games (upscaling, frame limiting, fixes for fussy games)
+mangohud               # FPS / frametime / temps overlay (MANGOHUD=1 %command% in Steam launch options)
+lib32-mangohud         # MangoHud for 32-bit games
+nvtop                  # GPU usage monitor in the terminal
 
 # --- communication ---
 discord
