@@ -5,6 +5,7 @@
 #   ./install.sh packages   only install packages
 #   ./install.sh system     only copy system/etc/* into /etc and enable system/services.txt
 #   ./install.sh link       only link configs (same as ./link.sh)
+#   ./install.sh defaults   only apply default apps from system/default-apps.txt
 #
 # Safe to re-run: already-installed packages are skipped.
 set -euo pipefail
@@ -52,10 +53,26 @@ enable_services() {
     return 0
 }
 
+# Apply system/default-apps.txt with xdg-mime (per-user: writes ~/.config/mimeapps.list).
+set_default_apps() {
+    echo "==> Setting default applications"
+    local app types
+    while read -r app types; do
+        if [[ ! -e "/usr/share/applications/$app" && ! -e "$HOME/.local/share/applications/$app" ]]; then
+            echo "    skipping $app (not installed)" >&2
+            continue
+        fi
+        # shellcheck disable=SC2086  # word-split the MIME type list on purpose
+        xdg-mime default "$app" $types
+        echo "    $app -> $types"
+    done < <(read_list "$DOTFILES/system/default-apps.txt")
+}
+
 case "${1:-all}" in
     packages)         install_packages ;;
     system|services)  install_etc_files; enable_services ;;
     link)             "$DOTFILES/link.sh" ;;
-    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh" ;;
-    *)                echo "usage: $0 [all|packages|system|link]" >&2; exit 1 ;;
+    defaults)         set_default_apps ;;
+    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps ;;
+    *)                echo "usage: $0 [all|packages|system|link|defaults]" >&2; exit 1 ;;
 esac

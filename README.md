@@ -14,6 +14,7 @@ dotfiles/
 │   ├── pacman.txt      # official repo packages
 │   └── aur.txt         # AUR packages (installed with paru)
 ├── system/
+│   ├── default-apps.txt # default apps per MIME type (browser, file manager, ...)
 │   ├── etc/            # files copied (not linked) into /etc, root-owned
 │   └── services.txt    # systemd units to enable (system-level)
 └── stow/               # one folder per app, each mirrors $HOME
@@ -43,6 +44,7 @@ cd ~/dotfiles
 | Add a package | add a line to `packages/pacman.txt` or `packages/aur.txt`, run `./install.sh packages` |
 | Track a new app's config | `mkdir -p stow/<app>/.config && mv ~/.config/<app> stow/<app>/.config/ && ./link.sh <app>` |
 | Enable a system service | add it to `system/services.txt`, run `./install.sh system` |
+| Change a default app | edit `system/default-apps.txt`, run `./install.sh defaults` |
 | Change a file in /etc | put it under `system/etc/` (same path), run `./install.sh system` |
 | Re-link everything | `./link.sh` |
 | Unlink an app | `./link.sh -D <app>` |
@@ -74,4 +76,6 @@ Anything that was in the way when linking is moved to `~/.dotfiles-backup/<times
   Started silently in the tray from `hypr/config/autostart.lua`. "Unlock with system authentication"
   needs a polkit agent, provided by `hyprpolkitagent` (also started from autostart).
   `system/etc/1password/custom_allowed_browsers` lists `zen-bin` so the browser extension can talk to the desktop app.
-- **Zen browser** — `zen-browser-bin` from the cachyos repo (prebuilt).
+- **Zen browser** — `zen-browser-bin` from the cachyos repo (prebuilt). Default browser via `system/default-apps.txt`,
+  `BROWSER` in `uwsm/env`, and `BROWSER` in `hypr/config/variables.lua` (Super+W).
+  `mimeapps.list` itself is not symlinked: apps rewrite it in place, which would replace the link with a plain file.
