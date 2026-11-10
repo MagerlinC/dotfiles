@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Bootstrap / update this machine from the dotfiles repo.
 #
-#   ./install.sh            install packages, enable services, then link configs
+#   ./install.sh            install packages, set up system files/services, then link configs
 #   ./install.sh packages   only install packages
-#   ./install.sh services   only enable the systemd units in system/services.txt
+#   ./install.sh system     only copy system/etc/* into /etc and enable system/services.txt
 #   ./install.sh link       only link configs (same as ./link.sh)
 #
 # Safe to re-run: already-installed packages are skipped.
@@ -28,6 +28,18 @@ install_packages() {
     paru -S --needed --noconfirm "${aur_pkgs[@]}"
 }
 
+# Copy system/etc/* into /etc as root-owned files. These are copied rather than symlinked
+# because several programs (e.g. 1Password) refuse config files that a normal user can modify.
+install_etc_files() {
+    echo "==> Installing files into /etc"
+    local src rel
+    while IFS= read -r -d '' src; do
+        rel="${src#"$DOTFILES/system/etc/"}"
+        sudo install -D -o root -g root -m 755 "$src" "/etc/$rel"
+        echo "    /etc/$rel"
+    done < <(find "$DOTFILES/system/etc" -type f -print0)
+}
+
 enable_services() {
     echo "==> Enabling system services"
     mapfile -t units < <(read_list "$DOTFILES/system/services.txt")
@@ -41,9 +53,9 @@ enable_services() {
 }
 
 case "${1:-all}" in
-    packages) install_packages ;;
-    services) enable_services ;;
-    link)     "$DOTFILES/link.sh" ;;
-    all)      install_packages; enable_services; "$DOTFILES/link.sh" ;;
-    *)        echo "usage: $0 [all|packages|services|link]" >&2; exit 1 ;;
+    packages)         install_packages ;;
+    system|services)  install_etc_files; enable_services ;;
+    link)             "$DOTFILES/link.sh" ;;
+    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh" ;;
+    *)                echo "usage: $0 [all|packages|system|link]" >&2; exit 1 ;;
 esac

@@ -18,5 +18,8 @@ mangohud               # FPS / frametime / temps overlay (MANGOHUD=1 %command% i
 lib32-mangohud         # MangoHud for 32-bit games
 nvtop                  # GPU usage monitor in the terminal
 
+# --- apps ---
+zen-browser-bin        # Zen browser (Firefox-based), prebuilt in the cachyos repo
+
 # --- communication ---
 discord

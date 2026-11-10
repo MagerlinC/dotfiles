@@ -8,12 +8,13 @@ Configs live here, are versioned with git, and are symlinked into place with
 
 ```
 dotfiles/
-├── install.sh          # install packages, enable services, then link configs
+├── install.sh          # install packages, set up system files/services, then link configs
 ├── link.sh             # symlink stow/* into $HOME (backs up anything in the way)
 ├── packages/
 │   ├── pacman.txt      # official repo packages
 │   └── aur.txt         # AUR packages (installed with paru)
 ├── system/
+│   ├── etc/            # files copied (not linked) into /etc, root-owned
 │   └── services.txt    # systemd units to enable (system-level)
 └── stow/               # one folder per app, each mirrors $HOME
     ├── hypr/.config/hypr        -> ~/.config/hypr
@@ -41,7 +42,8 @@ cd ~/dotfiles
 | Edit a config | edit it in `~/dotfiles/stow/...` (or via `~/.config/...` — same file), then `git commit` |
 | Add a package | add a line to `packages/pacman.txt` or `packages/aur.txt`, run `./install.sh packages` |
 | Track a new app's config | `mkdir -p stow/<app>/.config && mv ~/.config/<app> stow/<app>/.config/ && ./link.sh <app>` |
-| Enable a system service | add it to `system/services.txt`, run `./install.sh services` |
+| Enable a system service | add it to `system/services.txt`, run `./install.sh system` |
+| Change a file in /etc | put it under `system/etc/` (same path), run `./install.sh system` |
 | Re-link everything | `./link.sh` |
 | Unlink an app | `./link.sh -D <app>` |
 
@@ -71,3 +73,5 @@ Anything that was in the way when linking is moved to `~/.dotfiles-backup/<times
 - **1Password** — AUR. `install.sh` imports 1Password's signing key before building.
   Started silently in the tray from `hypr/config/autostart.lua`. "Unlock with system authentication"
   needs a polkit agent, provided by `hyprpolkitagent` (also started from autostart).
+  `system/etc/1password/custom_allowed_browsers` lists `zen-bin` so the browser extension can talk to the desktop app.
+- **Zen browser** — `zen-browser-bin` from the cachyos repo (prebuilt).
