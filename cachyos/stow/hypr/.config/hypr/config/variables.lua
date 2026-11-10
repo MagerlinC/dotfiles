@@ -1,6 +1,6 @@
 -- Hyprland default apps
 
-TERMINAL     = "kitty"
+TERMINAL     = "wezterm"
 FILE_MANAGER = "dolphin"
 BROWSER      = "zen-browser"
 EDITOR       = "gnome-text-editor --new-window"
