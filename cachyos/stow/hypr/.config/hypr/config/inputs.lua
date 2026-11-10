@@ -5,6 +5,9 @@ hl.config({
         -- US layout with AltGr extras: AltGr+z = æ, AltGr+l = ø, AltGr+w = å (add Shift for capitals)
         kb_layout = "us",
         kb_variant = "altgr-intl",
+        -- Key repeat: repeats/sec and ms before repeat starts (defaults: 25 / 600)
+        repeat_rate = 60,
+        repeat_delay = 200,
         -- sensitivity = -0.25,
         accel_profile = "flat",
     },
