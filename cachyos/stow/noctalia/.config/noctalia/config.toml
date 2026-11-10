@@ -89,6 +89,14 @@ wallpaper_scheme = "m3-tonal-spot"
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt", "alacritty" ]
 
+[wallpaper]
+directory = "/home/magerlin/dotfiles/catpuccin-landscape-bgs"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 1800
+    order = "random"
+
 [widget.clock]
 color = "secondary"
 format = "{:%H:%M %A %m/%d/%y}"
