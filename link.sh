@@ -26,6 +26,7 @@ fi
 # Keep these as real directories so Stow links the app folders inside them
 # rather than swallowing the whole parent into a single package.
 mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.local/share"
+mkdir -p -m 700 "$HOME/.ssh"   # private; SSH writes known_hosts here, so only individual files get linked
 
 if (($#)); then pkgs=("$@"); else
     pkgs=(); for d in "$STOW_DIR"/*/; do pkgs+=("$(basename "$d")"); done
@@ -34,12 +35,12 @@ fi
 shopt -s nullglob dotglob
 
 # List the paths (relative to $HOME) that a package will link:
-# ~/.config/<app>, ~/.local/{bin,share}/<thing>, or a top-level ~/.<file>.
+# ~/.config/<app>, ~/.ssh/<file>, ~/.local/{bin,share}/<thing>, or a top-level ~/.<file>.
 link_targets() {
     local root="$STOW_DIR/$1" entry sub child
     for entry in "$root"/*; do
         case "${entry##*/}" in
-            .config) for child in "$entry"/*; do echo "${child#"$root/"}"; done ;;
+            .config|.ssh) for child in "$entry"/*; do echo "${child#"$root/"}"; done ;;
             .local)  for sub in "$entry"/*/; do
                          for child in "$sub"*; do echo "${child#"$root/"}"; done
                      done ;;
