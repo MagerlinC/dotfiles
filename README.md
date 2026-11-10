@@ -34,3 +34,4 @@ cd ~/dotfiles/cachyos
 Both machines sign commits with an SSH key stored in 1Password (`gpg.format = ssh` in `gitconfig`).
 Each OS links its own `~/.config/git/platform.gitconfig` with the path to 1Password's `op-ssh-sign`
 (`gitconfig-macos` on the Mac, via `bin/setup-symlinks.sh`).
+`allowed_signers` lists the trusted key so `git log --show-signature` can verify commits locally.

@@ -15,6 +15,11 @@
 [gpg]
 	format = ssh
 
+# Keys trusted when verifying signatures locally (git log --show-signature).
+# Path is the same on both machines since the repo is cloned to ~/dotfiles on each.
+[gpg "ssh"]
+	allowedSignersFile = ~/dotfiles/allowed_signers
+
 # Per-OS settings (path to 1Password's op-ssh-sign). Linked by each OS's setup:
 #   macOS:   gitconfig-macos                                (bin/setup-symlinks.sh)
 #   CachyOS: cachyos/stow/git/.config/git/platform.gitconfig (cachyos/link.sh)
