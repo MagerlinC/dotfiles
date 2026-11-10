@@ -1,0 +1,12 @@
+# systemd units enabled by `./install.sh services` (system-level, needs sudo).
+# One unit per line. Comments (#) and blank lines are ignored.
+# Units CachyOS already enables (fstrim, bluetooth, ufw, scx_loader, NetworkManager, ...) are
+# not listed; add them here if you ever want this file to be the full record.
+
+# --- NVIDIA: save/restore video memory across suspend & hibernate (avoids black screen on wake) ---
+nvidia-suspend.service
+nvidia-resume.service
+nvidia-hibernate.service
+
+# --- housekeeping ---
+paccache.timer         # weekly: keep only the 3 newest versions of each package in /var/cache/pacman
