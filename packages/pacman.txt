@@ -1,0 +1,17 @@
+# Official repo packages (core / extra / multilib / cachyos-*).
+# One package per line. Comments (#) and blank lines are ignored.
+# Install with: ./install.sh packages
+
+# --- dotfiles tooling ---
+git
+stow
+paru
+
+# --- desktop plumbing ---
+hyprpolkitagent        # polkit agent: needed for 1Password "unlock with system auth" and GUI sudo prompts
+
+# --- gaming ---
+steam                  # multilib; NVIDIA 32-bit libs (lib32-nvidia-utils) are already installed by CachyOS
+
+# --- communication ---
+discord

@@ -1,0 +1,10 @@
+-- Auto-start config
+-- if you dont use UWSM add your auto start programs here, otherwise use XDG autostart https://wiki.archlinux.org/title/XDG_Autostart
+
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+    hl.exec_cmd("noctalia")
+    hl.exec_cmd("xhost +SI:localuser:root")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent") -- polkit agent (1Password system unlock, GUI auth prompts)
+    hl.exec_cmd("1password --silent")                     -- start 1Password in the tray for quick access / browser unlock
+end)
