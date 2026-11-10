@@ -7,6 +7,7 @@
 #   ./install.sh link       only link configs (same as ./link.sh)
 #   ./install.sh defaults   only apply default apps from system/default-apps.txt
 #   ./install.sh tmux       only install tmux plugins (tpm)
+#   ./install.sh zsh        only install oh-my-zsh + plugins
 #
 # Safe to re-run: already-installed packages are skipped.
 set -euo pipefail
@@ -70,6 +71,19 @@ set_default_apps() {
     done < <(read_list "$DOTFILES/system/default-apps.txt")
 }
 
+# oh-my-zsh + the plugins the shared zshrc enables. Cloned directly instead of using the
+# oh-my-zsh installer, which would try to replace ~/.zshrc (a symlink into this repo).
+setup_zsh() {
+    echo "==> Setting up oh-my-zsh"
+    local omz="$HOME/.oh-my-zsh" custom="$HOME/.oh-my-zsh/custom/plugins"
+    [[ -d "$omz" ]] || git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git "$omz"
+    [[ -d "$custom/zsh-syntax-highlighting" ]] || git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$custom/zsh-syntax-highlighting"
+    [[ -d "$custom/zsh-autosuggestions" ]] || git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "$custom/zsh-autosuggestions"
+    if [[ "$(getent passwd "$USER" | cut -d: -f7)" != */zsh ]]; then
+        echo "    login shell is not zsh; change it with: chsh -s /usr/bin/zsh  (then log out and back in)"
+    fi
+}
+
 # tmux plugin manager (tpm) + plugins, using the shared script from the repo root.
 setup_tmux_plugins() {
     if [[ -d "$HOME/.config/tmux/plugins/tpm" ]]; then return 0; fi
@@ -83,6 +97,7 @@ case "${1:-all}" in
     link)             "$DOTFILES/link.sh" ;;
     defaults)         set_default_apps ;;
     tmux)             setup_tmux_plugins ;;
-    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps; setup_tmux_plugins ;;
-    *)                echo "usage: $0 [all|packages|system|link|defaults|tmux]" >&2; exit 1 ;;
+    zsh)              setup_zsh ;;
+    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps; setup_zsh; setup_tmux_plugins ;;
+    *)                echo "usage: $0 [all|packages|system|link|defaults|tmux|zsh]" >&2; exit 1 ;;
 esac

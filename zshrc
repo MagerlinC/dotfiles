@@ -2,8 +2,13 @@ export ZSH="$HOME/.oh-my-zsh"
 export CDPATH=".:$HOME/git"
 export TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
 export PATH="$HOME/.dotnet/tools:$PATH"
-# Use homebrew Python
-export PATH="/opt/homebrew/bin:$PATH"
+
+# macOS only
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PATH="/opt/homebrew/bin:$PATH" # Homebrew (incl. Python)
+  alias updbrew="rm Brewfile && brew bundle dump"
+fi
+
 alias vim="nvim"
 alias pgc="pinegrove-cli"
 alias pgssh="ssh -i ~/.ssh/enclave ops@94.130.39.6"
@@ -39,9 +44,6 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
-# Update brewfile
-alias updbrew="rm Brewfile && brew bundle dump"
-
 alias tmuxdev="~/dotfiles/dev-tmux.sh"
 
 # zsh-syntax-highlighting
@@ -53,10 +55,6 @@ export EZA_CONFIG_DIR="$HOME/.config/eza"
 alias ls="eza --icons --group-directories-first --git --git-ignore"
 
 # git helpers
-function github_project_root () {
-  echo "https://github.$(git config remote.origin.url | cut -f2 -d. | sed 's/:/\//')"
-}
-
 function current_branch () {
   echo $(git symbolic-ref --quiet --short HEAD)    
 }
@@ -65,25 +63,7 @@ function current_directory () {
   echo $(git rev-parse --show-prefix)
 }
 
-function search() {
-  echo "Searching for: $@"
-  search=$(echo $@ | sed 's/ /%20/g')
-
-  open "https://duckduckgo.com/?q=$search"
-}
-
-function newpr () {
-  open $(github_project_root)/pull/new/$(git_current_branch)/
-}
-
-function openpr () {
-  open $(github_project_root)/pull/$(git_current_branch)/
-}
-
 ### ComplyCloud specific stuff ###
-
-# Raven ARM fix
-export RAVENDB_IMAGE=ravendb/ravendb:6.0.108-ubuntu.22.04-arm64v8
 
 alias ddb="docker compose up -d --build -V sql sql_migrations ravendb database_seeder"
 alias dkill="docker compose down -v"
@@ -107,4 +87,4 @@ tsapi () {
 }
 
 # Created by `pipx` on 2026-05-26 09:23:30
-export PATH="$PATH:/Users/mac/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
