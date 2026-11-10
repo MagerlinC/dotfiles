@@ -88,6 +88,9 @@ Anything that was in the way when linking is moved to `~/.dotfiles-backup/<times
   Started silently in the tray from `hypr/config/autostart.lua`. "Unlock with system authentication"
   needs a polkit agent, provided by `hyprpolkitagent` (also started from autostart).
   `system/etc/1password/custom_allowed_browsers` lists `zen-bin` so the browser extension can talk to the desktop app.
+- **Godot** — official 4.6.x .NET binary, pinned in `install.sh` (`GODOT_VERSION`/`GODOT_SHA512`) since the
+  repos/AUR only ship the latest release. `./install.sh godot` installs it to `~/.local/opt/godot/<version>`, links
+  `~/.local/bin/godot` and writes `~/.local/share/applications/godot.desktop`. C# needs `dotnet-sdk` (pacman.txt).
 - **Zen browser** — `zen-browser-bin` from the cachyos repo (prebuilt). Default browser via `system/default-apps.txt`,
   `BROWSER` in `uwsm/env`, and `BROWSER` in `hypr/config/variables.lua` (Super+W).
   `mimeapps.list` itself is not symlinked: apps rewrite it in place, which would replace the link with a plain file.

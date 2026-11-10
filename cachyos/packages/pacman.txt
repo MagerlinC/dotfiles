@@ -21,6 +21,9 @@ nvtop                  # GPU usage monitor in the terminal
 # --- apps ---
 zen-browser-bin        # Zen browser (Firefox-based), prebuilt in the cachyos repo
 
+# --- game dev ---
+dotnet-sdk             # C# for the Godot .NET build (Godot itself: ./install.sh godot, pinned to 4.6)
+
 # --- communication ---
 discord
 

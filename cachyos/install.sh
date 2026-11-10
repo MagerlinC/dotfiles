@@ -8,6 +8,7 @@
 #   ./install.sh defaults   only apply default apps from system/default-apps.txt
 #   ./install.sh tmux       only install tmux plugins (tpm)
 #   ./install.sh zsh        only install oh-my-zsh + plugins
+#   ./install.sh godot      only install the pinned Godot (.NET) binary
 #
 # Safe to re-run: already-installed packages are skipped.
 set -euo pipefail
@@ -84,6 +85,48 @@ setup_zsh() {
     fi
 }
 
+# Godot (.NET build), pinned to 4.6.x: the repos/AUR only package the latest release.
+# Official binary goes to ~/.local/opt/godot/<version>, with ~/.local/bin/godot and a .desktop entry.
+# To upgrade: bump GODOT_VERSION + GODOT_SHA512 (from the release's SHA512-SUMS.txt), re-run.
+GODOT_VERSION="4.6.3-stable"
+GODOT_SHA512="962c4f5fd3a704de36c9dedcb2f5f6c973065ac8ed8fd6e12c7ebf7e48c3852d774bcef2ccf76b50b206c0c564ceea54315e2943e76e397529923e7de680508e"
+install_godot() {
+    local name="Godot_v${GODOT_VERSION}_mono_linux_x86_64"
+    local base="https://github.com/godotengine/godot/releases/download/$GODOT_VERSION"
+    local dest="$HOME/.local/opt/godot/$GODOT_VERSION"
+    local bin="$dest/$name/Godot_v${GODOT_VERSION}_mono_linux.x86_64"
+
+    if [[ ! -x "$bin" ]]; then
+        echo "==> Installing Godot $GODOT_VERSION (.NET)"
+        local tmp
+        tmp="$(mktemp -d)"
+        curl -fL --progress-bar -o "$tmp/$name.zip" "$base/$name.zip"
+        echo "$GODOT_SHA512  $tmp/$name.zip" | sha512sum -c --quiet
+        mkdir -p "$dest"
+        unzip -q "$tmp/$name.zip" -d "$dest"
+        rm -rf "$tmp"
+    fi
+
+    mkdir -p "$HOME/.local/bin" "$HOME/.local/share/applications" "$HOME/.local/share/icons/hicolor/scalable/apps"
+    ln -sfn "$bin" "$HOME/.local/bin/godot"
+    local icon="$HOME/.local/share/icons/hicolor/scalable/apps/godot.svg"
+    [[ -s "$icon" ]] || curl -fsSL -o "$icon" "https://raw.githubusercontent.com/godotengine/godot/$GODOT_VERSION/icon.svg"
+    cat > "$HOME/.local/share/applications/godot.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Godot Engine
+GenericName=Game Engine
+Comment=Godot $GODOT_VERSION (.NET)
+Exec=$HOME/.local/bin/godot %f
+Icon=godot
+Terminal=false
+Categories=Development;IDE;
+MimeType=application/x-godot-project;
+StartupWMClass=Godot
+EOF
+    echo "    godot -> $bin"
+}
+
 # tmux plugin manager (tpm) + plugins, using the shared script from the repo root.
 setup_tmux_plugins() {
     if [[ -d "$HOME/.config/tmux/plugins/tpm" ]]; then return 0; fi
@@ -98,6 +141,7 @@ case "${1:-all}" in
     defaults)         set_default_apps ;;
     tmux)             setup_tmux_plugins ;;
     zsh)              setup_zsh ;;
-    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps; setup_zsh; setup_tmux_plugins ;;
-    *)                echo "usage: $0 [all|packages|system|link|defaults|tmux|zsh]" >&2; exit 1 ;;
+    godot)            install_godot ;;
+    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps; setup_zsh; setup_tmux_plugins; install_godot ;;
+    *)                echo "usage: $0 [all|packages|system|link|defaults|tmux|zsh|godot]" >&2; exit 1 ;;
 esac
