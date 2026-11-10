@@ -2,6 +2,9 @@
 
 hl.config({
     input = {
+        -- US layout with AltGr extras: AltGr+z = æ, AltGr+l = ø, AltGr+w = å (add Shift for capitals)
+        kb_layout = "us",
+        kb_variant = "altgr-intl",
         -- sensitivity = -0.25,
         accel_profile = "flat",
     },
