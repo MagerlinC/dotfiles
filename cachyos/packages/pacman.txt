@@ -23,3 +23,16 @@ zen-browser-bin        # Zen browser (Firefox-based), prebuilt in the cachyos re
 
 # --- communication ---
 discord
+
+# --- shared dev tools (configs at the repo root, shared with the Mac; see shared.txt) ---
+neovim
+tmux
+wezterm
+starship
+ttf-0xproto-nerd       # "0xProto Nerd Font" used by wezterm.lua
+ripgrep                # neovim: grep pickers
+fd                     # neovim: file pickers
+nodejs                 # neovim: Mason installs many LSPs/formatters via npm
+npm
+unzip                  # neovim: Mason unpacks downloads
+tree-sitter-cli        # neovim: nvim-treesitter parser builds

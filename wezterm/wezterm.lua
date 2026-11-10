@@ -32,22 +32,41 @@ config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 
 -- Key maps
-config.keys = {
-  {
-    key = "f",
-    mods = "SHIFT|CMD",
-    action = wezterm.action.ToggleFullScreen,
-  },
-  {
-    key = "w",
-    mods = "CMD",
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-  {
-    key = "t",
-    mods = "CMD",
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-}
+local is_mac = wezterm.target_triple:find("darwin") ~= nil
+
+if is_mac then
+  config.keys = {
+    {
+      key = "f",
+      mods = "SHIFT|CMD",
+      action = wezterm.action.ToggleFullScreen,
+    },
+    {
+      key = "w",
+      mods = "CMD",
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+      key = "t",
+      mods = "CMD",
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+  }
+else
+  -- Linux: same idea with the default CTRL|SHIFT bindings (tabs are handled by tmux).
+  -- Fullscreen stays on WezTerm's default ALT+Enter (CTRL|SHIFT+F is search here).
+  config.keys = {
+    {
+      key = "w",
+      mods = "CTRL|SHIFT",
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+      key = "t",
+      mods = "CTRL|SHIFT",
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+  }
+end
 
 return config

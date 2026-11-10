@@ -1,15 +1,18 @@
-# dotfiles
+# dotfiles / cachyos
 
-Single source of truth for this CachyOS (Hyprland + Noctalia) gaming machine.
+CachyOS (Hyprland + Noctalia) gaming desktop. Lives in `cachyos/` of the shared dotfiles repo;
+configs shared with the Mac (nvim, tmux, wezterm, starship, git) stay at the repo root and are
+linked from here via `shared.txt`.
 Configs live here, are versioned with git, and are symlinked into place with
 [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Layout
 
 ```
-dotfiles/
+dotfiles/cachyos/
 ├── install.sh          # install packages, set up system files/services, then link configs
-├── link.sh             # symlink stow/* into $HOME (backs up anything in the way)
+├── link.sh             # symlink stow/* and shared.txt entries into $HOME (backs up anything in the way)
+├── shared.txt          # repo-root configs shared with the Mac -> where they go in $HOME
 ├── packages/
 │   ├── pacman.txt      # official repo packages
 │   └── aur.txt         # AUR packages (installed with paru)
@@ -31,8 +34,8 @@ so editing a file in either place edits the same file, and new files an app crea
 
 ```sh
 sudo pacman -S --needed git
-git clone <your-remote> ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/MagerlinC/dotfiles ~/dotfiles   # switch to git@github.com:... once 1Password's SSH agent is on
+cd ~/dotfiles/cachyos
 ./install.sh
 ```
 
@@ -40,12 +43,13 @@ cd ~/dotfiles
 
 | Task | Command |
 | --- | --- |
-| Edit a config | edit it in `~/dotfiles/stow/...` (or via `~/.config/...` — same file), then `git commit` |
+| Edit a config | edit it in `~/dotfiles/cachyos/stow/...` (or via `~/.config/...` — same file), then `git commit` |
 | Add a package | add a line to `packages/pacman.txt` or `packages/aur.txt`, run `./install.sh packages` |
 | Track a new app's config | `mkdir -p stow/<app>/.config && mv ~/.config/<app> stow/<app>/.config/ && ./link.sh <app>` |
 | Enable a system service | add it to `system/services.txt`, run `./install.sh system` |
 | Change a default app | edit `system/default-apps.txt`, run `./install.sh defaults` |
 | Change a file in /etc | put it under `system/etc/` (same path), run `./install.sh system` |
+| Share a config with the Mac | put it at the repo root, add a line to `shared.txt` (and `../bin/setup-symlinks.sh`) |
 | Re-link everything | `./link.sh` |
 | Unlink an app | `./link.sh -D <app>` |
 
@@ -64,6 +68,14 @@ Anything that was in the way when linking is moved to `~/.dotfiles-backup/<times
   `LIBVA_DRIVER_NAME` to `nvidia` (safe because there is no iGPU).
 - **Monitors** (`hypr/config/monitors.lua`, names in `variables.lua`): DP-1 3440x1440@100 on the left (VRR-capable;
   `misc.vrr = 3` turns it on for fullscreen games/video), HDMI-A-1 2560x1440@144 on the right. Workspaces 1-3 on DP-1, 4-6 on HDMI-A-1.
+
+## Git & SSH
+
+- `~/.ssh/config` (`stow/ssh`) points SSH at 1Password's agent (`~/.1password/agent.sock`).
+  Needs 1Password → Settings → Developer → "Use the SSH agent".
+- Commits are signed with the SSH key "Github commit SSH key" from 1Password. The shared `gitconfig`
+  sets the key and `gpg.format = ssh`; the Linux-only `op-ssh-sign` path is in
+  `stow/git/.config/git/platform.gitconfig`.
 
 ## App notes
 

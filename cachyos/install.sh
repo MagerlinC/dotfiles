@@ -6,11 +6,13 @@
 #   ./install.sh system     only copy system/etc/* into /etc and enable system/services.txt
 #   ./install.sh link       only link configs (same as ./link.sh)
 #   ./install.sh defaults   only apply default apps from system/default-apps.txt
+#   ./install.sh tmux       only install tmux plugins (tpm)
 #
 # Safe to re-run: already-installed packages are skipped.
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(dirname "$DOTFILES")"   # shared (Mac + Linux) files live here
 
 # Print package names from a list file, stripping comments and blank lines.
 read_list() { sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^$/d' "$1"; }
@@ -68,11 +70,19 @@ set_default_apps() {
     done < <(read_list "$DOTFILES/system/default-apps.txt")
 }
 
+# tmux plugin manager (tpm) + plugins, using the shared script from the repo root.
+setup_tmux_plugins() {
+    if [[ -d "$HOME/.config/tmux/plugins/tpm" ]]; then return 0; fi
+    echo "==> Installing tmux plugins"
+    zsh "$REPO_ROOT/bin/install-tmux-plugins.sh"
+}
+
 case "${1:-all}" in
     packages)         install_packages ;;
     system|services)  install_etc_files; enable_services ;;
     link)             "$DOTFILES/link.sh" ;;
     defaults)         set_default_apps ;;
-    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps ;;
-    *)                echo "usage: $0 [all|packages|system|link|defaults]" >&2; exit 1 ;;
+    tmux)             setup_tmux_plugins ;;
+    all)              install_packages; install_etc_files; enable_services; "$DOTFILES/link.sh"; set_default_apps; setup_tmux_plugins ;;
+    *)                echo "usage: $0 [all|packages|system|link|defaults|tmux]" >&2; exit 1 ;;
 esac

@@ -3,12 +3,23 @@
 # Please adapt and uncomment the following lines:
 	name = Mikkel Agerlin
 	email = ma@complycloud.com
-	signingkey = 9861376C31AB74DC4FF2431E4A1A59C8E3090B4D
+	# SSH signing key, stored in 1Password ("Github commit SSH key")
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL3uqi/7tKrfSPdR7frzkuilIe0uDd2J/EHJHC5VE1L7
 [core]
 	editor = nvim
 
 [commit]
 	gpgsign = true
+
+# Sign commits with SSH via 1Password instead of GPG.
+[gpg]
+	format = ssh
+
+# Per-OS settings (path to 1Password's op-ssh-sign). Linked by each OS's setup:
+#   macOS:   gitconfig-macos                                (bin/setup-symlinks.sh)
+#   CachyOS: cachyos/stow/git/.config/git/platform.gitconfig (cachyos/link.sh)
+[include]
+	path = ~/.config/git/platform.gitconfig
 
 [alias]
 fresh = !git fetch && git switch main && git pull

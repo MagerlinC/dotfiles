@@ -1,0 +1,9 @@
+# Configs shared with the Mac, living at the repo root. Linked by ./link.sh (or ./link.sh shared).
+# Format: <path relative to repo root>  <path relative to $HOME>
+# Mac-side equivalents are in ../bin/setup-symlinks.sh.
+
+nvim           .config/nvim
+tmux           .config/tmux
+wezterm        .config/wezterm
+starship.toml  .config/starship.toml
+gitconfig      .gitconfig

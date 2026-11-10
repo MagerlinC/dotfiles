@@ -7,6 +7,7 @@ ln -nfs ~/dotfiles/zshrc ~/.zshrc
 ln -nfs ~/dotfiles/starship.toml ~/.config/starship.toml
 
 ln -nfs ~/dotfiles/gitconfig ~/.gitconfig
+mkdir -p ~/.config/git && ln -nfs ~/dotfiles/gitconfig-macos ~/.config/git/platform.gitconfig
 
 ln -nfs ~/dotfiles/ideavimrc ~/.ideavimrc
 

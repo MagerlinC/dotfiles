@@ -1,0 +1,3 @@
+# Linux-only git settings, included from the shared ~/.gitconfig
+[gpg "ssh"]
+	program = "/opt/1Password/op-ssh-sign"
