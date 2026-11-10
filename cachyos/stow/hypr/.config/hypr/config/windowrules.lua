@@ -126,3 +126,16 @@ hl.layer_rule({
   blur = true,
   blur_popups = true,
 })
+
+-- Awakened PoE Trade overlay (runs under XWayland via ~/.local/bin/awakened-poe-trade)
+hl.window_rule({
+    name     = "awakened-poe-trade",
+    match    = { class = "^(awakened-poe-trade|Awakened PoE Trade)$" },
+    float    = true,
+    pin      = true,
+    decorate = false,
+    no_blur  = true,
+    no_shadow = true,
+    no_anim  = true,
+    opacity  = "1.0 override",
+})
