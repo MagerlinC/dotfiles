@@ -1,0 +1,8 @@
+# AUR packages, installed with paru.
+# One package per line. Comments (#) and blank lines are ignored.
+
+1password              # desktop app (install.sh imports 1Password's signing key first)
+1password-cli          # `op` command; also enables CLI <-> desktop app integration
+
+# --- gaming tools ---
+rusty-path-of-building # Path of Building (PoE 1 + 2), native runner; PoB itself self-updates in-app

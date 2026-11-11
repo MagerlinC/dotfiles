@@ -7,6 +7,7 @@ ln -nfs ~/dotfiles/zshrc ~/.zshrc
 ln -nfs ~/dotfiles/starship.toml ~/.config/starship.toml
 
 ln -nfs ~/dotfiles/gitconfig ~/.gitconfig
+mkdir -p ~/.config/git && ln -nfs ~/dotfiles/gitconfig-macos ~/.config/git/platform.gitconfig
 
 ln -nfs ~/dotfiles/ideavimrc ~/.ideavimrc
 
@@ -19,9 +20,6 @@ ln -nfs ~/dotfiles/nvim ~/.config/nvim
 ln -nfs ~/dotfiles/wezterm ~/.config/wezterm
 
 #ln -nfs ~/dotfiles/yabai ~/.config/yabai
-
-mkdir ~/.aws
-ln -nfs ~/dotfiles/refreshMFA.py ~/.aws/refreshMFA.py
 
 ln -nfs ~/dotfiles/skhd ~/.config/skhd
 

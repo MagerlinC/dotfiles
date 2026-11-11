@@ -1,0 +1,11 @@
+# Default applications, applied by `./install.sh defaults` (writes ~/.config/mimeapps.list).
+# Format: <app>.desktop <mime type> [<mime type> ...]
+# Find an app's .desktop name in /usr/share/applications, and the MIME types it can open
+# in that file's MimeType= line. Check the current default with: xdg-mime query default <type>
+
+# --- web browser ---
+zen.desktop  x-scheme-handler/http x-scheme-handler/https text/html application/xhtml+xml
+
+# --- files & text (CachyOS defaults, recorded here so a reinstall keeps them) ---
+org.kde.dolphin.desktop       inode/directory
+org.gnome.TextEditor.desktop  text/plain

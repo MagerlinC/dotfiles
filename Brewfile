@@ -35,8 +35,6 @@ brew "node"
 brew "ollama"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Pinentry for GPG on Mac
-brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager

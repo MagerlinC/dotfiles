@@ -1,0 +1,23 @@
+-- Input configuration
+
+hl.config({
+    input = {
+        -- US layout with AltGr extras: AltGr+z = æ, AltGr+l = ø, AltGr+w = å (add Shift for capitals)
+        kb_layout = "us",
+        kb_variant = "altgr-intl",
+        -- Key repeat: repeats/sec and ms before repeat starts (defaults: 25 / 600)
+        repeat_rate = 60,
+        repeat_delay = 200,
+        -- sensitivity = -0.25,
+        accel_profile = "flat",
+    },
+    -- Uncomment the section below to enable software cursors; this can help with cursor display or behavior issues
+    -- cursor = {
+    --     no_hardware_cursors = 1,
+    -- },
+})
+
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "down",       action = "close" })
+hl.gesture({ fingers = 3, direction = "up",         action = "fullscreen" })
+hl.gesture({ fingers = 3, direction = "left",       action = "float" })

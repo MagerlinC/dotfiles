@@ -1,0 +1,41 @@
+# Official repo packages (core / extra / multilib / cachyos-*).
+# One package per line. Comments (#) and blank lines are ignored.
+# Install with: ./install.sh packages
+
+# --- dotfiles tooling ---
+git
+stow
+paru
+
+# --- desktop plumbing ---
+hyprpolkitagent        # polkit agent: needed for 1Password "unlock with system auth" and GUI sudo prompts
+
+# --- gaming ---
+steam                  # multilib; NVIDIA 32-bit libs (lib32-nvidia-utils) are already installed by CachyOS
+cachyos-gaming-meta    # proton-cachyos, wine-cachyos, umu-launcher, protontricks, winetricks, common 32-bit game libs
+gamescope              # micro-compositor for games (upscaling, frame limiting, fixes for fussy games)
+mangohud               # FPS / frametime / temps overlay (MANGOHUD=1 %command% in Steam launch options)
+lib32-mangohud         # MangoHud for 32-bit games
+nvtop                  # GPU usage monitor in the terminal
+
+# --- apps ---
+zen-browser-bin        # Zen browser (Firefox-based), prebuilt in the cachyos repo
+
+# --- game dev ---
+dotnet-sdk             # C# for the Godot .NET build (Godot itself: ./install.sh godot, pinned to 4.6)
+
+# --- communication ---
+discord
+
+# --- shared dev tools (configs at the repo root, shared with the Mac; see shared.txt) ---
+neovim
+tmux
+wezterm
+starship
+ttf-0xproto-nerd       # "0xProto Nerd Font" used by wezterm.lua
+ripgrep                # neovim: grep pickers
+fd                     # neovim: file pickers
+nodejs                 # neovim: Mason installs many LSPs/formatters via npm
+npm
+unzip                  # neovim: Mason unpacks downloads
+tree-sitter-cli        # neovim: nvim-treesitter parser builds
